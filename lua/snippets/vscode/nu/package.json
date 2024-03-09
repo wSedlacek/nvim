@@ -1,0 +1,187 @@
+{
+	"name": "vscode-nushell-lang",
+	"displayName": "vscode-nushell-lang",
+	"description": "nushell language for vscode",
+	"author": "The Nushell Project Developers",
+	"version": "1.7.1",
+	"preview": false,
+	"license": "MIT",
+	"publisher": "TheNuProjectContributors",
+	"homepage": "https://www.nushell.sh/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nushell/vscode-nushell-lang.git"
+	},
+	"bugs": {
+		"url": "https://github.com/nushell/vscode-nushell-lang/issues"
+	},
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"icon": "assets/nushell.ico",
+	"categories": [
+		"Programming Languages",
+		"Snippets"
+	],
+	"activationEvents": [
+		"onTerminalProfile:nushell_default"
+	],
+	"main": "out/client/src/extension.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "nushell",
+				"aliases": [
+					"nushell",
+					"nu"
+				],
+				"extensions": [
+					".nu"
+				],
+				"icon": {
+					"light": "assets/nu.svg",
+					"dark": "assets/nu.svg"
+				},
+				"firstLine": "^#!\\s*/?.*\\bnu\\b",
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "nushell",
+				"scopeName": "source.nushell",
+				"path": "./syntaxes/nushell.tmLanguage.json"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "start https://www.nushell.sh/book/",
+				"key": "ctrl+f1",
+				"when": "editorTextFocus && editorLangId == 'nushell'"
+			},
+			{
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus && editorLangId == 'nushell'",
+				"mac": "cmd+alt+j",
+				"win": "ctrl+alt+j",
+				"linux": "ctrl+alt+j"
+			}
+		],
+		"snippets": [
+			{
+				"language": "nushell",
+				"path": "./snippets/nushell.json"
+			}
+		],
+		"terminal": {
+			"profiles": [
+				{
+					"title": "Nushell",
+					"id": "nushell_default"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Nushell IDE Support",
+			"properties": {
+				"nushellLanguageServer.maxNumberOfProblems": {
+					"scope": "resource",
+					"type": "number",
+					"default": 100,
+					"description": "Controls the maximum number of problems produced by the server."
+				},
+				"nushellLanguageServer.trace.server": {
+					"scope": "window",
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off",
+					"description": "Traces the communication between VS Code and the language server."
+				},
+				"nushellLanguageServer.hints.showInferredTypes": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Display types inferred by nushell."
+				},
+				"nushellLanguageServer.nushellExecutablePath": {
+					"scope": "resource",
+					"type": "string",
+					"default": "nu",
+					"description": "The path to the nushell executable."
+				},
+				"nushellLanguageServer.maxNushellInvocationTime": {
+					"scope": "resource",
+					"type": "number",
+					"default": 10000000,
+					"description": "The maximum time in milliseconds to wait for nushell to respond."
+				},
+				"nushellLanguageServer.includeDirs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": "The directories to include in the nushell environment.",
+					"scope": "window"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run lint && npm run compile",
+		"esbuild-base": "npx esbuild server/src/server.ts client/src/extension.ts --bundle --outdir=out --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap --minify",
+		"compile": "npm run esbuild",
+		"install": "cd server && npm install && cd ../client && npm install && cd ..",
+		"watch": "npm run esbuild-base -- --sourcemap --watch",
+		"lint": "npx eslint ./client/src ./server/src --ext .ts,.tsx",
+		"test": "sh ./scripts/e2e.sh"
+	},
+	"dependencies": {
+		"glob": "^7.2.0",
+		"os": "^0.1.2",
+		"nushell-lsp-server": "file:server",
+		"nushell-lsp-client": "file:client"
+	},
+	"devDependencies": {
+		"@types/mocha": "^9.1.0",
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.65.0",
+		"@types/tmp": "^0.2.3",
+		"@typescript-eslint/eslint-plugin": "^5.54.0",
+		"@typescript-eslint/parser": "^5.54.0",
+		"@vscode/vsce": "^2.15.0",
+		"esbuild": "^0.14.42",
+		"eslint": "^8.35.0",
+		"mocha": "^9.2.1",
+		"ts-loader": "^9.2.8",
+		"typescript": "^5.0.2",
+		"webpack": "^5.70.0",
+		"webpack-cli": "^4.9.2"
+	},
+	"keywords": [
+		"nushell",
+		"nu",
+		"shell",
+		"scripting"
+	],
+	"galleryBanner": {
+		"color": "#008000",
+		"theme": "light"
+	},
+	"__metadata": {
+		"id": "6862b2a7-3c9b-4bae-b48f-c697c243e6e5",
+		"publisherId": "bdce115b-2cf9-41e1-aaa8-7a118b412bdc",
+		"publisherDisplayName": "The Nu Project Contributors",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1697821451272,
+		"preRelease": false
+	}
+}

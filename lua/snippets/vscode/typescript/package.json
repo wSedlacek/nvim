@@ -1,0 +1,73 @@
+{
+	"name": "vscode-ts-decorators",
+	"publisher": "semagarcia",
+	"version": "1.0.2",
+	"displayName": "TypeScript Decorators",
+	"description": "Snippets for TypeScript decorators for Visual Studio Code",
+	"homepage": "https://github.com/semagarcia/vscode-ts-decorators/blob/master/README.md",
+	"icon": "images/ts-decorators.png",
+	"galleryBanner": {
+		"color": "#0273D4",
+		"theme": "dark"
+	},
+	"license": "SEE LICENSE IN LICENSE.md",
+	"author": {
+		"name": "Sema García (@semagarcia)"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/semagarcia/vscode-ts-decorators.git"
+	},
+	"bugs": {
+		"url": "https://github.com/semagarcia/vscode-ts-decorators/issues"
+	},
+	"keywords": [
+		"TypeScript",
+		"Decorator",
+		"Snippet"
+	],
+	"engines": {
+		"vscode": "^1.10.0"
+	},
+	"scripts": {
+		"package": "vsce package",
+		"publish": "vsce publish"
+	},
+	"devDependencies": {
+		"vscode": "^1.11.0"
+	},
+	"categories": [
+		"Snippets",
+		"Other"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "typescript",
+				"path": "./snippets/class-decorator.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./snippets/method-decorator.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./snippets/parameter-decorator.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./snippets/parameter-param-decorator.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./snippets/property-decorator.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "e3f32b0e-25ee-4c5c-9e69-ddfe31584062",
+		"publisherId": "8032a306-161a-4817-87bb-490da6fc76b1",
+		"publisherDisplayName": "Sema García",
+		"installedTimestamp": 1637267257414
+	}
+}

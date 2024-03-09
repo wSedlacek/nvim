@@ -1,0 +1,17 @@
+{
+    "ParameterDecorator": {
+        "prefix": "ts-dec-parameter",
+        "scope": "typescript",
+        "description": "Snippet for scaffolding a TypeScript parameter decorator (with no params)",
+        "body": [
+            "/**",
+            " * Comment",
+            " *",
+            " * @returns {PropertyDecorator}",
+            " */",
+            "export function ${0:ParameterDecoratorName}(target: any, methodKey: string | symbol, parameterIndex: number) {",
+            "\t",
+            "}"
+        ]
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "MethodDecorator": {
+        "prefix": "ts-dec-method",
+        "scope": "typescript",
+        "description": "Snippet for scaffolding a TypeScript method decorator",
+        "body": [
+            "/**",
+            " * Comment",
+            " *",
+            " * @returns {MethodDecorator}",
+            " */",
+            "export function ${0:MethodDecoratorName}(): MethodDecorator {",
+            "\treturn function(target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor): PropertyDescriptor {",
+            "\t\treturn null;",
+            "\t}",
+            "}"
+        ]
+    }
+}

@@ -1,0 +1,145 @@
+{
+  "Generate an export function with schematics template": {
+    "prefix": "sch-default-function",
+    "body": [
+      "import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';",
+      "",
+      "export default function ${1:index}(_options: any): Rule {",
+      "  return (tree: Tree, _context: SchematicContext) => {",
+      "    ${0}",
+      "    return tree;",
+      "  };",
+      "}"
+    ]
+  },
+  "Generate a basic rule of schematics": {
+    "prefix": "sch-rule",
+    "body": [
+      "function ${1:name}(${2:options}: ${3:any}): Rule {",
+      "  return (${4:tree}: Tree, ${5:context}: SchematicContext) => {",
+      "    ${6}",
+      "    return tree;",
+      "  };",
+      "}"
+    ]
+  },
+  "Create a file to the tree": {
+    "prefix": "sch-tree-create",
+    "body": "tree.create(${1:path}, ${2:content});"
+  },
+  "Overwrite a file content from the tree": {
+    "prefix": "sch-tree-overwrite",
+    "body": "tree.overwrite(${1:path}, ${2:content});"
+  },
+  "Delete a file from the tree": {
+    "prefix": "sch-tree-delete",
+    "body": "tree.delete(${1:path});"
+  },
+  "Delete a directory from the tree": {
+    "prefix": "sch-tree-delete-directory",
+    "body": "tree.getDir(path).visit(filePath => tree.delete(filePath));"
+  },
+  "Rename a file from the tree": {
+    "prefix": "sch-tree-rename",
+    "body": "tree.rename(${1:from}, ${2:to});"
+  },
+  "Read a file from the tree": {
+    "prefix": "sch-tree-read",
+    "body": "const ${1:content} = tree.read(${2:path}).toString('${3:UTF-8}');"
+  },
+  "Check a file exist in the tree": {
+    "prefix": "sch-tree-exist",
+    "body": "tree.exist(${1:file})"
+  },
+  "Import externalSchematic": {
+    "prefix": "sch-import-external-schematic",
+    "body": "import { externalSchematic } from '@angular-devkit/schematics';"
+  },
+  "Run external schematics": {
+    "prefix": "sch-external-schematics",
+    "body": [
+      "externalSchematic('${1:collection}', '${2:schematic}', {",
+      "  ${3:...options}",
+      "  }",
+      "})"
+    ]
+  },
+  "Import chain rule": {
+    "prefix": "sch-import-chain",
+    "body": "import { chain } from '@angular-devkit/schematics';"
+  },
+  "Chain schematic rules": {
+    "prefix": "sch-chain-rules",
+    "body": [
+      "chain([${1:rule1}, ${2:rule2}]);"
+    ]
+  },
+  "Import rules to apply and merge templates": {
+    "prefix": "sch-import-apply-merge-templates",
+    "body": [
+      "import { apply, url, applyTemplates, move, chain, mergeWith } from '@angular-devkit/schematics';",
+      "import { strings, normalize } from '@angular-devkit/core';"
+    ]
+  },
+  "Apply and merge templates": {
+    "prefix": "sch-apply-merge-templates",
+    "body": [
+      "const ${1:templateSource} = apply(url('${2:./files}'), [",
+      "  applyTemplates({",
+      "    classify: strings.classify,",
+      "    dasherize: strings.dasherize,",
+      "    name: options.name",
+      "  }),",
+      "  move(normalize(options.path as string))",
+      "]);",
+      "",
+      "return chain([",
+      "  mergeWith(${1:templateSource})",
+      "]);"
+    ]
+  },
+  "Read json file": {
+    "prefix": "sch-read-json-file",
+    "body": "const ${1:content} = JSON.parse(tree.read(${2:'angular.json'}).toString('${3:UTF-8}'));"
+  },
+  "Write json file": {
+    "prefix": "sch-write-json-file",
+    "body": "tree.overwrite(${1:'angular.json'}, JSON.stringify(${2:jsonObject}, null, 2));"
+  },
+  "Create json file": {
+    "prefix": "sch-create-json-file",
+    "body": "tree.create(${1:'angular.json'}, JSON.stringify(${2:jsonObject}, null, 2));"
+  },
+  "Import install package task": {
+    "prefix": "sch-import-install-package-task",
+    "body": "import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';"
+  },
+  "Run install package task": {
+    "prefix": "sch-install-package",
+    "body": "_context.addTask(new NodePackageInstallTask());"
+  },
+  "Set dependencies to package.json": {
+    "prefix": "sch-set-package-dependencies",
+    "body": [
+      "const content = JSON.parse(tree.read('package.json')!.toString('UTF-8'));",
+      "content.dependencies['${1:package}'] = '${2:version}';",
+      "tree.overwrite('package.json', JSON.stringify(content, null, 2));"
+    ]
+  },
+  "Set devDependencies to package.json": {
+    "prefix": "sch-set-package-dev-dependencies",
+    "body": [
+      "const content = JSON.parse(tree.read('package.json')!.toString('UTF-8'));",
+      "content.devDependencies['${1:package}'] = '${2:version}';",
+      "tree.overwrite('package.json', JSON.stringify(content, null, 2));"
+    ]
+  },
+  "Set script to package.json": {
+    "prefix": "sch-set-package-scripts",
+    "body": [
+      "const content = JSON.parse(tree.read('package.json')!.toString('UTF-8'));",
+      "content.scripts['${1:alias}'] = '${2:command}';",
+      "tree.overwrite('package.json', JSON.stringify(content, null, 2));"
+    ]
+  }
+}

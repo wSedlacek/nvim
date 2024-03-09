@@ -1,0 +1,19 @@
+{
+    "ClassDecorator": {
+        "prefix": "ts-dec-class",
+        "scope": "typescript",
+        "description": "Snippet for scaffolding a TypeScript class decorator",
+        "body": [
+            "/**",
+            " * Comment",
+            " *",
+            " * @returns {ClassDecorator}",
+            " */",
+            "export function ${0:ClassDecoratorName}(): ClassDecorator {",
+            "\treturn function <TFunction extends Function> (target: TFunction): TFunction {",
+            "\t\treturn null;",
+            "\t}",
+            "}"
+        ]
+    }
+}

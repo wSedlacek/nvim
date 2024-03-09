@@ -1,0 +1,70 @@
+{
+  "name": "Angular2",
+  "publisher": "johnpapa",
+  "displayName": "Angular Snippets (Version 16)",
+  "description": "Angular version 16 snippets by John Papa",
+  "version": "16.0.1",
+  "icon": "images/angular-shield.png",
+  "galleryBanner": {
+    "color": "#0273D4",
+    "theme": "dark"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnpapa/vscode-angular-snippets.git"
+  },
+  "keywords": [
+    "Angular",
+    "Angular 16",
+    "TypeScript",
+    "HTML"
+  ],
+  "engines": {
+    "vscode": "^1.40.0"
+  },
+  "scripts": {
+    "package": "npx vsce package",
+    "publish": "npx vsce publish",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. ."
+  },
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "categories": [
+    "Snippets",
+    "Other"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./snippets/typescript.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/html.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.11",
+    "@vscode/test-web": "^0.0.22",
+    "typescript": "^4.1.2",
+    "vscode": "*"
+  },
+  "__metadata": {
+    "id": "214cbfb9-7c06-4467-bad4-357ae83eb587",
+    "publisherId": "4434843a-4ebf-4f44-84f5-4176380c492d",
+    "publisherDisplayName": "John Papa",
+    "targetPlatform": "undefined",
+    "isApplicationScoped": false,
+    "updated": true,
+    "isPreReleaseVersion": false,
+    "installedTimestamp": 1687260244673,
+    "preRelease": false
+  }
+}
+

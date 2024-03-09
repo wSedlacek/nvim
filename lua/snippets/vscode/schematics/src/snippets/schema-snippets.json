@@ -1,0 +1,75 @@
+{
+  "schema.json template": {
+    "prefix": "sch-default-json",
+    "body": [
+      "{",
+      " \"schema\": \"http://json-schema.org/schema\",",
+      " \"id\": \"${1:schematics-id}\",",
+      " \"title\": \"${2:title}\",",
+      " \"type\": \"object\",",
+      " \"description\": \"${3:description}\",",
+      " \"properties\": {},",
+      " \"required\": []",
+      "}"
+    ]
+  },
+  "Add a property to schema.json": {
+    "prefix": "sch-property",
+    "body": [
+      "\"${1:property}\": {",
+      "  \"description\": \"${2:description}\",",
+      "  \"type\": \"${3:string}\",",
+      "  \"default\": \"${4:default}\"",
+      "}"
+    ]
+  },
+  "Add a property to schema.json contains prompt input": {
+    "prefix": "sch-property-prompt-input",
+    "body": [
+      "\"${1:property}\": {",
+      "  \"description\": \"${2:description}\",",
+      "  \"type\": \"string\",",
+      "  \"default\": \"${3:default}\",",
+      "  \"x-prompt\": \"${5:message}\"",
+      "}"
+    ]
+  },
+  "Add a property to schema.json contains prompt Y/N": {
+    "prefix": "sch-property-prompt-yes-no",
+    "body": [
+      "\"${1:property}\": {",
+      "  \"description\": \"${2:description}\",",
+      "  \"type\": \"boolean\",",
+      "  \"default\": ${3:true},",
+      "  \"x-prompt\": \"${4:message}\"",
+      "}"
+    ]
+  },
+  "Add a property to schema.json contains prompt selection": {
+    "prefix": "sch-property-prompt-selection",
+    "body": [
+      "\"${1:property}\": {",
+      "  \"description\": \"${2:description}\",",
+      "  \"type\": \"${3:string}\",",
+      "  \"default\": \"${4:value1}\",",
+      "  \"x-prompt\": {",
+      "    \"message\": \"${5:message}\",",
+      "    \"type\": \"list\",",
+      "    \"items\": [",
+      "      { \"value\": \"${6:value1}\", \"label\": \"${7:label1}\" },",
+      "      { \"value\": \"${8:value2}\", \"label\": \"${9:label2}\" }",
+      "    ]",
+      "  }",
+      "}"
+    ]
+  },
+  "Property $default": {
+    "prefix": "sch-property-dollar-default",
+    "body": [
+      "\"$${1:default}\": {",
+      "  \"$${2:source}\": \"argv\",",
+      "  \"index\": 0",
+      "}"
+    ]
+  }
+}

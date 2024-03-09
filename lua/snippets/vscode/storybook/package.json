@@ -1,0 +1,50 @@
+{
+	"name": "storybook-snippets",
+	"displayName": "Storybook Snippets",
+	"description": "Storybook Snippets for Angular",
+	"icon": "images/storybookLogo.png",
+	"version": "0.0.10",
+	"publisher": "norato",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/norato/storybook-snippets.git"
+	},
+	"bugs": {
+		"url": "https://github.com/norato/storybook-snippets/issues"
+	},
+	"homepage": "https://github.com/norato/storybook-snippets#readme",
+	"engines": {
+		"vscode": "^1.28.0"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"keywords": [
+		"Storybook",
+		"Angular",
+		"TypeScript"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "typescript",
+				"path": "./snippets/typescript.json"
+			}
+		]
+	},
+	"scripts": {
+		"nps": "nps",
+		"build": "nps build",
+		"deploy": "nps publish"
+	},
+	"devDependencies": {
+		"nps": "^5.10.0",
+		"vsce": "^1.77.0"
+	},
+	"__metadata": {
+		"id": "c4f1ad11-c3f1-4311-b14e-18dc4bc70c8a",
+		"publisherId": "68dcbef3-0087-4ef0-bc90-411cae13f36b",
+		"publisherDisplayName": "Felipe Norato",
+		"installedTimestamp": 1637267256222
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"name": "vscode-schematics-snippets",
+	"displayName": "Schematics Snippets",
+	"description": "Code snippets collection for writing @angular-devkit/schematics",
+	"publisher": "mikehuang",
+	"version": "5.0.2",
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"vsce:publish": "vsce publish",
+		"vsce:publish:patch": "vsce publish patch",
+		"vsce:publish:minor": "vsce publish minor",
+		"vsce:publish:major": "vsce publish major",
+		"vsce:package": "vsce package",
+		"gen:document": "ts-node document-generator.ts"
+	},
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"categories": [
+		"Snippets",
+		"Other"
+	],
+	"icon": "icon.png",
+	"activationEvents": [
+		"onLanguage:typescript",
+		"onLanguage:json",
+		"onCommand:schematicToolkit.genSchematic"
+	],
+	"main": "src/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "schematicToolkit.genSchematic",
+				"title": "Schematics: Generate A Schematic"
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wellwind/vscode-schematics-snippets.git"
+	},
+	"license": "MIT",
+	"keywords": [
+		"schematics",
+		"typescript",
+		"code snippets"
+	],
+	"devDependencies": {
+		"@types/node": "^12.7.7",
+		"@types/prettier": "^1.18.2",
+		"@types/shelljs": "^0.8.5",
+		"@types/vscode": "^1.39.0",
+		"markdown-table": "^1.1.3",
+		"shelljs": "^0.8.3",
+		"ts-node": "^8.4.1",
+		"typescript": "^3.6.3",
+		"vsce": "^1.66.0"
+	},
+	"__metadata": {
+		"id": "4e502f6c-aed8-4f85-8e3e-10113bc05036",
+		"publisherId": "5cd5043e-e484-42d6-963f-bd1356134a46",
+		"publisherDisplayName": "Mike Huang",
+		"installedTimestamp": 1637267257942
+	}
+}

@@ -1,0 +1,40 @@
+{
+  "Angular Story: init": {
+    "prefix": "ng-story",
+    "description": "Initialize a story for a Angular Component",
+    "body": [
+      "import { moduleMetadata } from '@storybook/angular';\n",
+      "const metadata = moduleMetadata({",
+      "\timports: []",
+      "});\n",
+      "export default {",
+      "\ttitle: '${1:component}',",
+      "\tdecorators: [metadata]",
+      "};\n",
+      "export const Default = () => ({",
+      "\ttemplate: `",
+      "\t\t<h1> story works!<h1>",
+      "\t`,",
+      "\tprops: {},",
+      "});\n",
+      "Default.story = {",
+      "\tname: '${1:component}',",
+      "};\n"
+    ]
+  },
+  "Angular Story: add story": {
+    "prefix": "ng-add-story",
+    "description": "Add Storybook Story",
+    "body": [
+      "export const ${1:story} = () => ({",
+      "\ttemplate: `",
+      "\t\t<h1> story works!<h1>",
+      "\t`,",
+      "\tprops: {},",
+      "});\n",
+      "${1:story}.story = {",
+      "\tname: '${1:story}',",
+      "};\n"
+    ]
+  }
+}

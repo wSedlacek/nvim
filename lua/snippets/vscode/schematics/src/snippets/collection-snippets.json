@@ -1,0 +1,31 @@
+{
+  "Add a schematic to collection.json by deafult function": {
+    "prefix": "sch-new-schematic-default",
+    "body": [
+      "\"${1:schematic-name}\": {",
+      "  \"description\": \"${2:Description.}\",",
+      "  \"factory\": \"./${1:schematic-name}\",",
+      "  \"schema\": \"./${1:schematic-name}/schema.json\"",
+      "}"
+    ]
+  },
+  "Add a schematic to collection.json by function name": {
+    "prefix": "sch-new-schematic-function-name",
+    "body": [
+      "\"${1:schematic-name}\": {",
+      "  \"description\": \"${3:Description.}\",",
+      "  \"factory\": \"./${1:schematic-name}/index#${2:functionName}\",",
+      "  \"schema\": \"./${1:schematic-name}/schema.json\"",
+      "}"
+    ]
+  },
+  "Add a schematic of \"ng-add\" to collection.json": {
+    "prefix": "sch-ng-add",
+    "body": [
+      "\"ng-add\": {",
+      "  \"description\": \"${1:Description...}\",",
+      "  \"factory\": \"./ng-add\"",
+      "}"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "PropertyDecorator": {
+        "prefix": "ts-dec-property",
+        "scope": "typescript",
+        "description": "Snippet for scaffolding a TypeScript property decorator",
+        "body": [
+            "/**",
+            " * Comment",
+            " *",
+            " * @returns {PropertyDecorator}",
+            " */",
+            "export function ${0:PropertyDecoratorName}(): PropertyDecorator {",
+            "\treturn function(target: Object, propertyKey: string | symbol) {",
+            "\t\t",
+            "\t}",
+            "}"
+        ]
+    }
+}

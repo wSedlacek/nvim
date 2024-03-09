@@ -1,0 +1,175 @@
+{
+	"name": "vscode-nginx-conf-hint",
+	"displayName": "nginx.conf hint",
+	"description": "Nginx configuration helper for Visual Studio Code with many features including syntax highlight, auto-complete, in-editor documents, embedded Lua block, and more",
+	"version": "0.3.0",
+	"license": "GPL-3.0",
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#E5FFEC",
+		"theme": "light"
+	},
+	"categories": [
+		"Snippets",
+		"Formatters",
+		"Programming Languages"
+	],
+	"keywords": [
+		"Nginx",
+		"OpenResty",
+		"Configuration",
+		"Auto-completion"
+	],
+	"publisher": "hangxingliu",
+	"author": "hangxingliu",
+	"main": "./src/extension/main.desktop.js",
+	"browser": "./artifacts/web-ext/extension.js",
+	"scripts": {
+		"lint:eslint": "eslint . --ext .js,.ts",
+		"build:desktop-ext": "tsc -p tsconfig.extension.json",
+		"dev:web-ext": "webpack",
+		"build:web-ext": "webpack --mode production --devtool hidden-source-map",
+		"build:utils": "tsc -p tsconfig.utils.json",
+		"build:syntax": "ts-node --project tsconfig.syntax.json ./src/syntax/generate-tmLanguage.ts",
+		"clean": "rimraf 'src/extension/**/*.js' 'src/utils/**/*.js'"
+	},
+	"extensionKind": [
+		"ui",
+		"workspace"
+	],
+	"extensionDependencies": [],
+	"dependencies": {},
+	"devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "*",
+		"axios": "^0.24.0",
+		"chalk": "^3.0.0",
+		"cheerio": "1.0.0-rc.10",
+		"html-minifier": "^4.0.0",
+		"https-proxy-agent": "^5.0.0",
+		"process": "^0.11.10",
+		"rimraf": "^3.0.2",
+		"ts-loader": "^9.2.6",
+		"ts-node": "^10.4.0",
+		"turndown": "^7.1.1",
+		"typescript": "^4.4.4",
+		"vsce": "^2.3.0",
+		"webpack": "^5.64.1",
+		"webpack-cli": "^4.9.1"
+	},
+	"optionalDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.4.0",
+		"@typescript-eslint/parser": "^5.4.0",
+		"eslint": "^8.2.0"
+	},
+	"engines": {
+		"vscode": "^1.1.0"
+	},
+	"activationEvents": [
+		"onLanguage:NGINX",
+		"onLanguage:lua"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "NGINX",
+				"aliases": [
+					"NGINX"
+				],
+				"extensions": [
+					".conf",
+					"mime.types",
+					"fastcgi_params",
+					"scgi_params",
+					"uwsgi_params"
+				],
+				"configuration": "./nginx.configuration.json"
+			}
+		],
+		"snippets": [
+			{
+				"language": "NGINX",
+				"path": "./assets/snippets/nginx.json"
+			},
+			{
+				"language": "lua",
+				"path": "./assets/snippets/lua.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "NGINX",
+				"scopeName": "source.nginx",
+				"path": "./src/syntax/nginx.tmLanguage",
+				"embeddedLanguages": {
+					"meta.embedded.block.lua": "lua"
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "nginx-conf-hint.showDocument",
+				"title": "Goto Nginx Document"
+			}
+		],
+		"configuration": [
+			{
+				"title": "Nginx configuration",
+				"properties": {
+					"nginx-conf-hint.enableStrictCompletion": {
+						"title": "Strict Completion",
+						"type": "boolean",
+						"default": true,
+						"description": "only complete directives related to the block where cursor is located"
+					},
+					"nginx-conf-hint.format.align": {
+						"title": "Alignment",
+						"type": "boolean",
+						"default": false,
+						"description": "Set whether to perform alignment formatting"
+					},
+					"nginx-conf-hint.externalModules": {
+						"title": "Nginx external modules",
+						"type": "array",
+						"items": {
+							"enum": [
+								"lua",
+								"js"
+							]
+						},
+						"default": [],
+						"description": "Enabled hint data for external modules (lua,js)"
+					}
+				}
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "!inOutput && resourceLangId == 'NGINX'",
+					"command": "nginx-conf-hint.showDocument",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hangxingliu/vscode-nginx-conf-hint"
+	},
+	"bugs": {
+		"url": "https://github.com/hangxingliu/vscode-nginx-conf-hint/issues"
+	},
+	"homepage": "https://github.com/hangxingliu/vscode-nginx-conf-hint",
+	"__metadata": {
+		"id": "c3d3e8fb-c61d-4edf-8fb8-32298bc763f9",
+		"publisherId": "43f8445f-f00e-4e08-ab0f-21e398616231",
+		"publisherDisplayName": "Liu Yue",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1663950134271
+	}
+}

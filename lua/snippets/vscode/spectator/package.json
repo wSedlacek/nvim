@@ -1,0 +1,35 @@
+{
+	"name": "angular-spectator-snippets",
+	"displayName": "Angular Spectator Snippets",
+	"description": "Code snippets for Angular Spectator",
+	"version": "0.0.2",
+	"publisher": "NetanelBasal",
+	"icon": "logo.png",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"galleryBanner": {
+		"color": "#BDE4A7"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ngneat/spectator"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "typescript",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "b2d65a89-11ed-4a8c-bc75-5c8385718a93",
+		"publisherId": "5b729d61-a7aa-4c00-9108-d495b1a19a08",
+		"publisherDisplayName": "Netanel Basal",
+		"installedTimestamp": 1637267256992
+	}
+}

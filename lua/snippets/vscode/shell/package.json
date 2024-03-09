@@ -1,0 +1,55 @@
+{
+	"name": "shellman",
+	"displayName": "shellman",
+	"description": "Shell script snippet",
+	"version": "5.7.0",
+	"publisher": "Remisa",
+	"icon": "images/icon.png",
+	"license": "SEE LICENSE IN LICENSE.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yousefvand/shellman.git"
+	},
+	"galleryBanner": {
+		"color": "#A79E35",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.28.1"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "shellscript",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	},
+	"devDependencies": {
+		"cspell": "^6.30.2",
+		"path": "^0.12.7"
+	},
+	"scripts": {
+		"build": "node build.js",
+		"build-rem": "node build.js && yes | cp ~/Code/shellman/snippets/snippets.json ~/.config/Code/User/snippets/shellscript.json",
+		"spellcheck": "npx cspell ./**/*"
+	},
+	"dependencies": {
+		"ovsx": "0.8.3",
+		"vsce": "^2.15.0"
+	},
+	"__metadata": {
+		"id": "2783c7a6-dc32-471d-ab7f-863ca5e8deb3",
+		"publisherId": "62df9664-f00a-4674-95a3-f25f90d8a7a4",
+		"publisherDisplayName": "Remisa",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1693496548228,
+		"preRelease": false
+	}
+}

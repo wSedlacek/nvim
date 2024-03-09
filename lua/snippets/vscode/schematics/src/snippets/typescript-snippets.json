@@ -1,0 +1,32 @@
+{
+  "Import TypeScript Compiler API": {
+    "prefix": "ts-import",
+    "body": "import * as ts from 'typescript';"
+  },
+  "Convert string to AST node": {
+    "prefix": "ts-string-to-ast",
+    "body": "const ${1:ast} = ts.createSourceFile('', ${2:content}, ${3:ts.ScriptTarget.Latest});"
+  },
+  "Convert AST node to code": {
+    "prefix": "ts-ast-to-code",
+    "body": [
+      "const resultFile = ts.createSourceFile(",
+      "  '',",
+      "  '',",
+      "  ts.ScriptTarget.Latest,",
+      "  /*setParentNodes*/ false,",
+      "  ts.ScriptKind.TS",
+      ");",
+      "",
+      "const printer = ts.createPrinter({",
+      "  newLine: ts.NewLineKind.LineFeed",
+      "});",
+      "",
+      "const result = printer.printNode(",
+      "  ts.EmitHint.Unspecified,",
+      "  ${1:astNode},",
+      "  resultFile",
+      ");"
+    ]
+  }
+}
