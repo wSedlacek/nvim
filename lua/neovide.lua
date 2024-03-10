@@ -30,19 +30,15 @@ if vim.g.neovide then
   vim.g.neovide_profiler = false
   vim.g.neovide_cursor_vfx_mode = ""
 
-  -- https://github.com/neovide/neovide/pull/2165
-  vim.g.neovide_scroll_animation_length = 0
-
   local currect_directory = vim.fn.getcwd()
 
   if currect_directory == "/" then
     local path_to_desktop = "~/Code"
-
-    local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
-
-    vim.api.nvim_create_autocmd(
-      { "VimEnter" },
-      { pattern = "*", command = "cd " .. path_to_desktop, group = vim_enter_group }
-    )
+    vim.cmd("cd " .. path_to_desktop)
   end
+
+  -- See https://github.com/neovide/neovide/issues/2330
+  vim.schedule(function()
+    vim.cmd "NeovideFocus"
+  end)
 end

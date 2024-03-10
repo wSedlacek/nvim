@@ -61,12 +61,15 @@ end, {
 map("n", "J", "mzJ`z", {
   desc = "Remove line break",
 })
-map("n", "<C-d>", "<C-d>zz", {
-  desc = "Jump half page down",
+
+-- Resenters screen after jumping (Note scrol down add 1 line to correct for navic)
+map("n", "<C-d>", "<C-d>zz<C-y>", {
+  desc = "Jump Half page down",
 })
 map("n", "<C-u>", "<C-u>zz", {
-  desc = "Jump half page up",
+  desc = "Jump Half page up",
 })
+
 map("n", "n", "nzzzv", {
   desc = "Find next",
 })
@@ -292,31 +295,25 @@ end, {
 
 -- Telescope
 
-map("n", "<leader>fW", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<cr>", {
-  desc = "Find word under cursor",
+map("n", "<leader>fW", function()
+  require("telescope.builtin").grep_string { search = vim.fn.expand "<cword>" }
+end, {
+  desc = "Telescope Find word under cursor",
 })
 map("n", "<leader>fp", "<cmd>Telescope projects<cr>", {
-  desc = "Find projects",
-})
-map("n", "<leader><leader>", function()
-  require("telescope").extensions.smart_open.smart_open {
-    cwd_only = true,
-    filename_first = false,
-  }
-end, {
-  desc = "Smart open",
+  desc = "Telescope Find projects",
 })
 map("n", "<leader>fs", "<cmd>Telescope ast_grep<cr>", {
-  desc = "Find AST",
+  desc = "Telescope Find AST",
 })
 map("n", "<leader>fi", "<cmd>Telescope import<cr>", {
-  desc = "Find import",
+  desc = "Telescope Find import",
 })
 map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", {
-  desc = "Find keymaps",
+  desc = "Telescope Find keymaps",
 })
 map("n", "\\", "<cmd>Telescope resume<cr>", {
-  desc = "Resume last search",
+  desc = "Telescope Resume last search",
 })
 
 -- Search
