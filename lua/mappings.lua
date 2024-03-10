@@ -485,6 +485,15 @@ map({ "n", "t" }, "<A-h>", function()
   vim.cmd [[wincmd j]]
 end, { desc = "Terminal New horizontal term" })
 
+-- Snippets
+map("n", "<leader>se", function()
+  require("scissors").editSnippet()
+end, { desc = "Edit snippet" })
+
+map({ "n", "x" }, "<leader>sa", function()
+  require("scissors").addNewSnippet()
+end, { desc = "Add new snippet" })
+
 -- Remove default keymaps
 local unmap = vim.keymap.del
 

@@ -1,0 +1,14 @@
+{
+  "plugin": {
+    "prefix": "plugin",
+    "body": [
+      "---@type NvPluginSpec",
+      "return {",
+      "  \"$1\",",
+      "  event = \"$2\",",
+      "  opts = $3",
+      "}"
+    ]
+  }
+}
+

@@ -13,6 +13,8 @@ return {
       "markdown",
       "markdown_inline",
       "swift",
+      "bash",
+      "regex",
     },
     indent = {
       enable = true,
@@ -22,9 +24,7 @@ return {
       enable = false,
     },
   },
-  event = "VeryLazy",
   config = function(_, opts)
-    dofile(vim.g.base46_cache .. "syntax")
     require("nvim-treesitter.configs").setup(opts)
     require "configs.treesitter"
   end,

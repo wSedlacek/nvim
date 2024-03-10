@@ -11,7 +11,6 @@ local sources = {
   --   end,
   -- },
 
-  b.diagnostics.terraform_validate,
   b.diagnostics.hadolint,
   b.diagnostics.swiftlint.with {
     diagnostics_postprocess = function(diagnostics)

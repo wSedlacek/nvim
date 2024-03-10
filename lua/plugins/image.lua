@@ -1,7 +1,7 @@
 ---@type NvPluginSpec
 return {
   "samodostal/image.nvim",
-  event = "BufRead",
+  event = "FileType",
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     render = {
