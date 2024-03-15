@@ -268,19 +268,14 @@ map("n", "<leader>sQ", "<cmd>lua require('persistence').stop()<cr>", {
 
 -- lspconfig
 
-map("n", "<leader>ld", "<cmd>TroubleToggle<cr>", {
-  desc = "Diagnostics",
+map("n", "<leader>ld", "<cmd>TroubleToggle document_diagnostics<cr>", {
+  desc = "LSP Diagnostics",
 })
 map("n", "<leader>lt", "<CMD>TodoTrouble keywords=TODO,FIX,FIXME,BUG,TEST,NOTE<CR>", {
-  desc = "Todo/Fix/Fixme",
-})
-map("n", "<leader>lD", function()
-  require("lsp_lines").toggle()
-end, {
-  desc = "Toggle inline diagnostics",
+  desc = "LSP Todo/Fix/Fixme",
 })
 map("n", "<leader>lR", "<cmd>LspRestart<cr>", {
-  desc = "Restart Language Server",
+  desc = "LSP Restart Language Server",
 })
 map("n", "<leader>ca", function()
   require("actions-preview").code_actions()
@@ -299,9 +294,6 @@ map("n", "<leader>fW", function()
   require("telescope.builtin").grep_string { search = vim.fn.expand "<cword>" }
 end, {
   desc = "Telescope Find word under cursor",
-})
-map("n", "<leader>fp", "<cmd>Telescope projects<cr>", {
-  desc = "Telescope Find projects",
 })
 map("n", "<leader>fs", "<cmd>Telescope ast_grep<cr>", {
   desc = "Telescope Find AST",
@@ -399,7 +391,7 @@ map("n", "<leader>oy", "<cmd>ObsidianYesterday<cr>", {
 })
 
 -- Quickfix
-map("n", "<leader>Q", function()
+map("n", "Q", function()
   local trouble = require "trouble"
   if trouble.is_open() then
     trouble.close()
@@ -496,3 +488,4 @@ local unmap = vim.keymap.del
 
 unmap("n", "<leader>rn")
 unmap("t", "<Esc>")
+unmap("n", "<leader>lf")

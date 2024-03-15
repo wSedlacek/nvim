@@ -1,7 +1,6 @@
 ---@type NvPluginSpec
 return {
   "chrisgrieser/nvim-spider",
-  event = "VeryLazy",
   keys = {
     {
       "w",

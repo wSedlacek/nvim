@@ -6,17 +6,19 @@ local highlights = require "highlights"
 local fortune = require "fortune"
 
 M.ui = {
-  theme = "gatekeeper",
+  theme = "oxocarbon",
 
   hl_override = highlights.override,
   hl_add = highlights.add,
-  lsp_semantic_tokens = true,
+
   lsp = {
+    semantic_tokens = true,
     signature = {
       disabled = true,
       silent = true,
     },
   },
+
   nvdash = {
     load_on_startup = true,
     header = fortune.get_fortune(48),
@@ -30,6 +32,7 @@ M.ui = {
       { "  Mappings", "Spc c h", "NvCheatsheet" },
     },
   },
+
   integrations = {
     "blankline",
     "notify",
@@ -38,12 +41,9 @@ M.ui = {
     "mason",
     "codeactionmenu",
   },
-  telescope = {
-    style = "borderless",
-  },
-  cheatsheet = {
-    theme = "grid",
-  },
+
+  telescope = { style = "borderless" },
+  cheatsheet = { theme = "grid" },
   cmp = {
     style = "atom_colored",
     icons = true,
@@ -55,12 +55,14 @@ M.ui = {
   },
 
   statusline = {
-    order = { "mode", "file", "git", "%=", "noice", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "cursor" },
+    theme = "minimal",
+    separator_style = "round",
+    order = { "mode", "git", "%=", "noice", "lsp_msg", "%=", "diagnostics", "cwd", "cursor" },
     modules = {
       noice = function()
         local status = require("noice").api.status.mode.get()
         if status then
-          return "%##" .. status
+          return "%#NoiceVirtualText#" .. status
         end
 
         return "%##"

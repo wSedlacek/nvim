@@ -3,7 +3,7 @@ return {
   "stevearc/oil.nvim",
   event = "UIEnter",
   opts = {
-    view_options = { show_hidden = true },
+    view_options = { show_hidden = false },
   },
   dependencies = { "nvim-tree/nvim-web-devicons" },
 }

@@ -11,7 +11,18 @@ local util = require "lspconfig.util"
 require "configs.diagnostics"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "marksman", "nxls", "ocamllsp", "sqlls", "sourcekit", "bufls" }
+local servers = {
+  "html",
+  "cssls",
+  "marksman",
+  "nxls",
+  "ocamllsp",
+  "sqlls",
+  "sourcekit",
+  "bufls",
+  "dockerls",
+  "biome",
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -95,5 +106,14 @@ lspconfig.lua_ls.setup {
         preloadFileSize = 10000,
       },
     },
+  },
+}
+
+lspconfig.typos_lsp.setup {
+  on_init,
+  on_attach,
+  capabilities,
+  init_options = {
+    diagnosticSeverity = "Hint",
   },
 }

@@ -2,8 +2,7 @@
 return {
   "pmizio/typescript-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-  event = "FileType",
-  ft = { "ts", "tsx" },
+  ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
   config = function()
     require("typescript-tools").setup {
       capabilities = require("nvchad.configs.lspconfig").capabilities,
@@ -24,4 +23,9 @@ return {
       },
     }
   end,
+  keys = {
+    { "<leader>ci", "<cmd>TSToolsRemoveUnusedImports<cr>", desc = "TypeScript Remove Unused Imports" },
+    { "<leader>cI", "<cmd>TSToolsAddMissingImports<cr>", desc = "TypeScript Add Missing Imports" },
+    { "<leader>rf", "<cmd>TSToolsRenameFile<cr>", desc = "TypeScript Rename File" },
+  },
 }

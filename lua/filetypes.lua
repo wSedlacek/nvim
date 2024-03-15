@@ -13,3 +13,9 @@ vim.api.nvim_create_autocmd({ "bufread", "bufenter" }, {
   pattern = "*.leaf",
   command = "set filetype=html",
 })
+
+vim.api.nvim_create_autocmd({ "bufread", "bufenter" }, {
+  group = vim_filetype_group,
+  pattern = "*/templates/*.{yaml,yml},*/templates/*.tpl,*.gotmpl,helmfile*.{yaml,yml}",
+  command = "set filetype=helm",
+})

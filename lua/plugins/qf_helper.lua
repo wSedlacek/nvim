@@ -1,7 +1,8 @@
 ---@type NvPluginSpec
 return {
   "stevearc/qf_helper.nvim",
-  event = { "BufRead", "BufNew" },
+  enabled = true,
+  cmd = { "QFToggle", "Cclose", "QNext", "QPrev", "Reject" },
   ft = { "qf" },
   opts = {},
 }

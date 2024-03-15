@@ -1,6 +1,7 @@
 ---@type NvPluginSpec
 return {
   "samodostal/image.nvim",
+  enabled = false,
   event = "FileType",
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {

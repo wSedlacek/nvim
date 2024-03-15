@@ -102,6 +102,8 @@ return {
             { find = "; before #%d+" },
             { find = "%d fewer lines" },
             { find = "%d more lines" },
+            { find = "%d lines yanked" },
+            { find = "(%d of %d)" },
           },
         },
         opts = { skip = true },
@@ -113,6 +115,7 @@ return {
           any = {
             { find = "No information available" },
             { find = "No references found" },
+            { find = "No lines in buffer" },
           },
         },
         opts = { skip = true },

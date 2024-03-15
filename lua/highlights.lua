@@ -29,11 +29,6 @@ M.add = {
   -- Nvim Tree
   NvimTreeOpenedFolderName = { fg = "green", bold = true },
 
-  -- Bqf
-  BqfPreviewFloat = { link = "NormalFloat" },
-  BqfPreviewBorder = { link = "FloatBorder" },
-  BqfPreviewTitle = { link = "TelescopePreviewTitle" },
-
   -- Diagnostics
   DiagnosticVirtualTextHint = { link = "Comment" },
   DiagnosticVirtualTextInfo = { link = "Comment" },

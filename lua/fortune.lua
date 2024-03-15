@@ -1203,6 +1203,17 @@ local fortune_list = {
   {
     "Space is a completely unforgiving environment. If you screw up the engineering, somebody dies (and there's no partial credit because most of the analysis was right...)",
   },
+  {
+    "Great software cannot be built on the first try.",
+    "Bad software must first be built to understand the problem.",
+    "",
+    "- William Sedlacek",
+  },
+  {
+    "There are two types of engineers in this field, those that need tickets and those that do the work resulting in tickets.",
+    "",
+    "- Joseph Petrie",
+  },
 }
 
 local M = {}

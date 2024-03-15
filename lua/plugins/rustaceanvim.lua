@@ -2,7 +2,6 @@
 return {
   "mrcjkb/rustaceanvim",
   version = "^3",
-  event = "FileType",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "mfussenegger/nvim-dap",
