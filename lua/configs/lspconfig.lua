@@ -34,7 +34,11 @@ end
 
 lspconfig.angularls.setup {
   on_init = on_init,
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    -- This conflicts with the tsserver lsp
+    client.server_capabilities.renameProvider = false
+    on_attach(client, bufnr)
+  end,
   capabilities = capabilities,
   root_dir = util.root_pattern("angular.json", "nx.json", "project.json", "nativescript.config.ts"),
 }
@@ -66,9 +70,7 @@ lspconfig.jsonls.setup {
     documentFormatting = false,
     json = {
       schemas = require("schemastore").json.schemas(),
-      validate = {
-        enable = true,
-      },
+      validate = { enable = true },
     },
   },
 }

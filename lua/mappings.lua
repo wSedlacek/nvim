@@ -274,7 +274,10 @@ map("n", "<leader>ld", "<cmd>TroubleToggle document_diagnostics<cr>", {
 map("n", "<leader>lt", "<CMD>TodoTrouble keywords=TODO,FIX,FIXME,BUG,TEST,NOTE<CR>", {
   desc = "LSP Todo/Fix/Fixme",
 })
-map("n", "<leader>lR", "<cmd>LspRestart<cr>", {
+map("n", "<leader>lR", function()
+  vim.diagnostic.reset()
+  vim.cmd [[LspRestart]]
+end, {
   desc = "LSP Restart Language Server",
 })
 map("n", "<leader>ca", function()
