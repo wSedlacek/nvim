@@ -268,6 +268,9 @@ map("n", "<leader>sQ", "<cmd>lua require('persistence').stop()<cr>", {
 
 -- lspconfig
 
+map("n", "<leader>lf", "<cmd>EslintFixAll<cr>", {
+  desc = "LSP Fix all",
+})
 map("n", "<leader>ld", "<cmd>TroubleToggle document_diagnostics<cr>", {
   desc = "LSP Diagnostics",
 })
@@ -283,12 +286,12 @@ end, {
 map("n", "<leader>ca", function()
   require("actions-preview").code_actions()
 end, {
-  desc = "LSP code action",
+  desc = "LSP Code action",
 })
 map("v", "<leader>ca", function()
   require("actions-preview").code_actions()
 end, {
-  desc = "LSP code action",
+  desc = "LSP Code action",
 })
 
 -- Telescope
@@ -491,4 +494,3 @@ local unmap = vim.keymap.del
 
 unmap("n", "<leader>rn")
 unmap("t", "<Esc>")
-unmap("n", "<leader>lf")

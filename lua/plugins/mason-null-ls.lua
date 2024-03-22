@@ -25,6 +25,8 @@ return {
       "emmet-ls",
       "biome",
       "typos-lsp",
+      "buf-language-server",
+      "buf",
     },
   },
 }

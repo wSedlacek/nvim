@@ -4,6 +4,7 @@ return {
   opts = {
     ensure_installed = {
       "vim",
+      "vimdoc",
       "lua",
       "html",
       "css",
@@ -16,13 +17,15 @@ return {
       "bash",
       "regex",
       "helm",
+      "proto",
     },
     indent = {
       enable = true,
       disable = { "swift", "text" },
     },
-    hihglight = {
-      enable = false,
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
     },
   },
   config = function(_, opts)

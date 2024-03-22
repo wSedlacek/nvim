@@ -12,11 +12,8 @@ M.ui = {
   hl_add = highlights.add,
 
   lsp = {
-    semantic_tokens = true,
-    signature = {
-      disabled = true,
-      silent = true,
-    },
+    semantic_tokens = false,
+    signature = true,
   },
 
   nvdash = {
@@ -51,13 +48,37 @@ M.ui = {
     selected_item_bg = "simple",
   },
   tabufline = {
-    order = { "treeOffset", "buffers", "tabs" },
+    order = { "treeOffset", "buffers", "harpoon", "tabs" },
+    modules = {
+      harpoon = function()
+        local Harpoonline = require("harpoonline").setup {
+          icon = "",
+        }
+
+        local success, line = pcall(Harpoonline.format)
+        if not success then
+          return ""
+        end
+
+        return "%#TbFill#" .. line .. " "
+      end,
+    },
   },
 
   statusline = {
     theme = "minimal",
     separator_style = "round",
-    order = { "mode", "git", "%=", "noice", "lsp_msg", "%=", "diagnostics", "cwd", "cursor" },
+    order = {
+      "mode",
+      "git",
+      "%=",
+      "lsp_msg",
+      "noice",
+      "%=",
+      "diagnostics",
+      "cwd",
+      "cursor",
+    },
     modules = {
       noice = function()
         local status = require("noice").api.status.mode.get()

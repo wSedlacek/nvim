@@ -19,7 +19,9 @@ vim.api.nvim_create_autocmd("User", {
           vim.t.bufs = vim.tbl_filter(function(b)
             return b ~= bufnr
           end, vim.t.bufs)
-          vim.cmd("bdelete " .. bufnr)
+          vim.schedule(function()
+            vim.cmd("bdelete! " .. bufnr)
+          end)
         end
       end
     end

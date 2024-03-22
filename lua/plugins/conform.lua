@@ -49,17 +49,7 @@ return {
         return
       end
 
-      if slow_format_filetypes[vim.bo[bufnr].filetype] then
-        return
-      end
-
-      local function on_format(err)
-        if err and err:match "timeout$" then
-          slow_format_filetypes[vim.bo[bufnr].filetype] = true
-        end
-      end
-
-      return { timeout_ms = 500, lsp_fallback = true }, on_format
+      return { timeout_ms = 500 }
     end,
 
     format_after_save = function(bufnr)

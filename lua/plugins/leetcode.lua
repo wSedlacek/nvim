@@ -3,7 +3,6 @@ local leet_arg = "leetcode.nvim"
 ---@type NvPluginSpec
 return {
   "kawre/leetcode.nvim",
-  build = ":TSUpdate html",
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim",

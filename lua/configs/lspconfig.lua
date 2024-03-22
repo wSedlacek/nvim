@@ -3,7 +3,6 @@ local configs = require "nvchad.configs.lspconfig"
 local on_attach = configs.on_attach
 local on_init = configs.on_init
 local capabilities = configs.capabilities
-
 ---@diagnostic disable-next-line: different-requires
 local lspconfig = require "lspconfig"
 local util = require "lspconfig.util"
@@ -21,7 +20,7 @@ local servers = {
   "sourcekit",
   "bufls",
   "dockerls",
-  "biome",
+  -- "biome",
 }
 
 for _, lsp in ipairs(servers) do
@@ -78,13 +77,7 @@ lspconfig.jsonls.setup {
 lspconfig.eslint.setup {
   on_init = on_init,
   capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-    on_attach(client, bufnr)
-  end,
+  on_attach = on_attach,
 }
 
 lspconfig.lua_ls.setup {

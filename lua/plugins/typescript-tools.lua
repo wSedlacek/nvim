@@ -4,11 +4,11 @@ return {
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
   config = function()
+    local lspconfig = require "nvchad.configs.lspconfig"
     require("typescript-tools").setup {
-      capabilities = require("nvchad.configs.lspconfig").capabilities,
-      on_attach = function(client, bufnr)
-        require("nvchad.configs.lspconfig").on_attach(client, bufnr)
-      end,
+      on_init = lspconfig.on_init,
+      capabilities = lspconfig.capabilities,
+      on_attach = lspconfig.on_attach,
       settings = {
         complete_function_calls = false,
         tsserver_file_preferences = {
