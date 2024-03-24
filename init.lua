@@ -40,6 +40,7 @@ require "neovide"
 require "statuscolumn"
 require "filetypes"
 require "autocmds"
+require "commands"
 require "snippets"
 
 vim.schedule(function()

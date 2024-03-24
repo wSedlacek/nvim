@@ -9,7 +9,6 @@ local util = require "lspconfig.util"
 
 require "configs.diagnostics"
 
--- if you just want default config for the servers then put them in a table
 local servers = {
   "html",
   "cssls",
@@ -21,6 +20,7 @@ local servers = {
   "bufls",
   "dockerls",
   -- "biome",
+  "bashls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -78,30 +78,7 @@ lspconfig.eslint.setup {
   on_init = on_init,
   capabilities = capabilities,
   on_attach = on_attach,
-}
-
-lspconfig.lua_ls.setup {
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-          [vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types"] = true,
-          [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-      },
-    },
-  },
+  root_dir = util.root_pattern ".git",
 }
 
 lspconfig.typos_lsp.setup {
@@ -111,4 +88,32 @@ lspconfig.typos_lsp.setup {
   init_options = {
     diagnosticSeverity = "Hint",
   },
+}
+
+require("typescript-tools").setup {
+  on_init = function(client, bufnr)
+    on_init(client, bufnr)
+    vim.schedule(function()
+      vim.cmd.NxInit()
+    end)
+  end,
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_dir = util.root_pattern ".git",
+  settings = {
+    complete_function_calls = false,
+    tsserver_file_preferences = {
+      includeinlayparameternamehints = "all",
+      includecompletionsformoduleexports = true,
+      quotepreference = "auto",
+    },
+    tsserver_format_options = {
+      allowincompletecompletions = false,
+      allowrenameofimportpath = false,
+    },
+    tsserver_plugins = {
+      "@monodon/typescript-nx-imports-plugin",
+    },
+  },
+  filetypes = { "angular", "typescript", "typescriptreact", "javascript", "javascriptreact" },
 }

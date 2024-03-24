@@ -27,6 +27,7 @@ return {
       "typos-lsp",
       "buf-language-server",
       "buf",
+      "bash-language-server",
     },
   },
 }
