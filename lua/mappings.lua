@@ -1,7 +1,5 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
 
 if vim.g.neovide then
@@ -382,20 +380,6 @@ map("n", "<leader>cj", "<cmd>lua require('treesj').toggle()<cr>", {
   desc = "Open block",
 })
 
--- obsidian
-map("n", "<leader>oo", "<cmd>ObsidianQuickSwitch<cr>", {
-  desc = "Open Obsididan",
-})
-map("n", "<leader>os", "<cmd>ObsidianSearch<cr>", {
-  desc = "Search Obsisdian",
-})
-map("n", "<leader>ot", "<cmd>ObsidianToday<cr>", {
-  desc = "Open Today",
-})
-map("n", "<leader>oy", "<cmd>ObsidianYesterday<cr>", {
-  desc = "Open Yesterday",
-})
-
 -- Quickfix
 map("n", "Q", function()
   local trouble = require "trouble"
@@ -465,7 +449,7 @@ end, { desc = "Terminal New vertical window" })
 map({ "n", "t" }, "<A-v>", function()
   require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm", size = 1 }
 
-  -- Trigger siwtch back and forth to automatically resize
+  -- Trigger switch back and forth to automatically resize
   -- nvim-focus/focus.nvim
   vim.cmd [[wincmd h]]
   vim.cmd [[wincmd l]]
@@ -474,7 +458,7 @@ end, { desc = "Terminal Toggleable vertical term" })
 map({ "n", "t" }, "<A-h>", function()
   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm", size = 1 }
 
-  -- Trigger siwtch back and forth to automatically resize
+  -- Trigger switch back and forth to automatically resize
   -- nvim-focus/focus.nvim
   vim.cmd [[wincmd k]]
   vim.cmd [[wincmd j]]

@@ -3,11 +3,12 @@ if vim.version.major == 0 and vim.version.minor < 9 then
   return
 end
 
-local relativeStatusColumn = "%= %{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum) : ''}%=│%s"
+local relativeStatusColumn = "%= %{v:virtnum == 0 ? (v:relnum ? v:relnum : v:lnum) : ''}%=│%s"
 local normalStatusColumn = "%= %l%=│%#WarningMsg#%s"
 
 -- With sepaartor.
 vim.opt.numberwidth = 5
+vim.opt.relativenumber = true
 vim.opt.statuscolumn = relativeStatusColumn
 
 local augroup = vim.api.nvim_create_augroup("numbertoggle", {})
@@ -17,9 +18,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "Cmdline
   group = augroup,
   callback = function()
     if vim.o.nu and vim.api.nvim_get_mode().mode ~= "i" then
-      vim.opt.numberwidth = 5
-      vim.opt.relativenumber = true
-      vim.opt.statuscolumn = relativeStatusColumn
+      vim.opt_local.numberwidth = 5
+      vim.opt_local.relativenumber = true
+      vim.opt_local.statuscolumn = relativeStatusColumn
     end
   end,
 })
@@ -28,9 +29,9 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEn
   group = augroup,
   callback = function()
     if vim.o.nu then
-      vim.opt.numberwidth = 5
-      vim.opt.relativenumber = false
-      vim.opt.statuscolumn = normalStatusColumn
+      vim.opt_local.numberwidth = 5
+      vim.opt_local.relativenumber = false
+      vim.opt_local.statuscolumn = normalStatusColumn
       vim.cmd "redraw"
     end
   end,

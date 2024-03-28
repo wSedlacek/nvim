@@ -3,7 +3,7 @@ local colors = require("base46").get_theme_tb "base_30"
 ---@type NvPluginSpec
 return {
   "mvllow/modes.nvim",
-  event = "BufEnter",
+  event = "ModeChanged",
 
   opts = {
     colors = {

@@ -1,7 +1,7 @@
 ---@type NvPluginSpec
 return {
   "tenxsoydev/karen-yank.nvim",
-  event = "BufEnter",
+  event = "VeryLazy",
   opts = {
     mappings = {
       karen = "y",

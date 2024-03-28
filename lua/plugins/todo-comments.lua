@@ -1,6 +1,6 @@
 ---@type NvPluginSpec
 return {
   "folke/todo-comments.nvim",
-  event = "BufEnter",
+  event = "LspAttach",
   opts = {},
 }

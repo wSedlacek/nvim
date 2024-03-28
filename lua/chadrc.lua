@@ -6,7 +6,7 @@ local highlights = require "highlights"
 local fortune = require "fortune"
 
 M.ui = {
-  theme = "oxocarbon",
+  theme = "ayu_dark",
 
   hl_override = highlights.override,
   hl_add = highlights.add,

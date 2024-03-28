@@ -2,6 +2,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
+    auto_install = false,
     ensure_installed = {
       "vim",
       "vimdoc",
@@ -18,6 +19,7 @@ return {
       "regex",
       "helm",
       "proto",
+      "org",
     },
     indent = {
       enable = true,
@@ -28,8 +30,4 @@ return {
       additional_vim_regex_highlighting = false,
     },
   },
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-    require "configs.treesitter"
-  end,
 }

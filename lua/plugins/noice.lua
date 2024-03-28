@@ -1,7 +1,7 @@
 ---@type NvPluginSpec
 return {
   "folke/noice.nvim",
-  event = "VeryLazy",
+  event = "UIEnter",
   dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
   opts = {
     cmdline = {

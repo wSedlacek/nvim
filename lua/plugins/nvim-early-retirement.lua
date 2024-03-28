@@ -1,6 +1,6 @@
 ---@type NvPluginSpec
 return {
   "chrisgrieser/nvim-early-retirement",
-  event = "BufEnter",
+  event = "VeryLazy",
   opts = {},
 }
