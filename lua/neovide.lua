@@ -4,16 +4,16 @@ if vim.g.neovide then
 
   vim.o.shell = "fish"
 
-  vim.g.neovide_window_blurred = true
   vim.g.neovide_transparency = 0.9
   vim.g.transparency = 1
 
   vim.g.neovide_show_border = false
-  vim.g.neovide_floating_shadow = true
+  vim.g.neovide_floating_shadow = false
   vim.g.neovide_floating_z_height = 10
   vim.g.neovide_light_angle_degrees = 45
   vim.g.neovide_light_radius = 5
 
+  vim.g.neovide_window_blurred = true
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
 
@@ -22,7 +22,6 @@ if vim.g.neovide then
   vim.g.neovide_padding_right = 8
   vim.g.neovide_padding_left = 8
 
-  vim.g.neovide_input_macos_alt_is_meta = true
   vim.g.neovide_input_macos_option_key_is_meta = "both"
 
   vim.g.neovide_hide_mouse_when_typing = true
@@ -37,11 +36,6 @@ if vim.g.neovide then
     local path_to_desktop = "~/Code"
     vim.cmd("cd " .. path_to_desktop)
   end
-
-  -- See https://github.com/neovide/neovide/issues/2330
-  vim.schedule(function()
-    vim.cmd "NeovideFocus"
-  end)
 
   -- https://github.com/neovide/neovide/issues/1771
   vim.api.nvim_create_autocmd({ "BufLeave", "BufNew" }, {

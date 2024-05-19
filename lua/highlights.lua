@@ -46,7 +46,7 @@ M.add = {
 
   -- Command Prompt
   NoiceCmdlineIcon = { fg = "green" },
-  NoiceCmdlinePopup = { bg = "darker_black", blend = 47 },
+  NoiceCmdlinePopup = { bg = "darker_black", blend = 0 },
 }
 
 return M
