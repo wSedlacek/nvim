@@ -90,30 +90,30 @@ lspconfig.typos_lsp.setup {
   },
 }
 
-require("typescript-tools").setup {
-  on_init = function(client, bufnr)
-    on_init(client, bufnr)
-    vim.schedule(function()
-      vim.cmd.NxInit()
-    end)
-  end,
-  capabilities = capabilities,
+lspconfig.vtsls.setup {
+  on_init = on_init,
   on_attach = on_attach,
+  capabilities = capabilities,
   root_dir = util.root_pattern ".git",
+  filetypes = { "angular", "typescript", "typescriptreact", "javascript", "javascriptreact" },
   settings = {
-    complete_function_calls = false,
-    tsserver_file_preferences = {
-      includeinlayparameternamehints = "all",
-      includecompletionsformoduleexports = true,
-      quotepreference = "auto",
+    vtsls = {
+      autoUseWorkspaceTsdk = true,
+      experimental = {
+        completion = {
+          enableServerSideFuzzyMatch = true,
+        },
+      },
+      tsserver = {
+        globalPlugins = {
+          { name = "@monodon/typescript-nx-imports-plugin" },
+        },
+      },
     },
-    tsserver_format_options = {
-      allowincompletecompletions = false,
-      allowrenameofimportpath = false,
-    },
-    tsserver_plugins = {
-      "@monodon/typescript-nx-imports-plugin",
+    typescript = {
+      prefrences = {
+        quoteStyle = "auto",
+      },
     },
   },
-  filetypes = { "angular", "typescript", "typescriptreact", "javascript", "javascriptreact" },
 }

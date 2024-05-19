@@ -8,7 +8,6 @@ return {
     vim.opt.updatetime = 200
     require("barbecue").setup {
       create_autocmd = false,
-      -- https://github.com/neovide/neovide/pull/2165
       lead_custom_section = function()
         return { { " ", "WinBar" } }
       end,

@@ -28,6 +28,7 @@ return {
       "buf-language-server",
       "buf",
       "bash-language-server",
+      "vtsls",
     },
   },
 }

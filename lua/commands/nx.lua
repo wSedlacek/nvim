@@ -2,13 +2,13 @@ vim.api.nvim_create_user_command("NxInit", function()
   local lspClients = vim.lsp.get_active_clients()
   local tsclient
   for _, client in ipairs(lspClients) do
-    if client.name == "typescript-tools" then
+    if client.name == "vtsls" then
       tsclient = client
     end
   end
 
   if not tsclient then
-    print "typescript-tools.nvim not active"
+    print "nvim-vtsls not active"
     return
   end
 
@@ -65,15 +65,19 @@ vim.api.nvim_create_user_command("NxInit", function()
         end
       end
 
-      local constants = require "typescript-tools.protocol.constants"
-      local method = constants.CustomMethods.ConfigurePlugin
-      local args = {
-        pluginName = "@monodon/typescript-nx-imports-plugin",
-        configuration = { externalFiles = externalFiles },
-      }
+      tsclient.request("workspace/executeCommand", {
+        command = "_typescript.configurePlugin",
+        arguments = {
+          "@monodon/typescript-nx-imports-plugin",
+          { externalFiles = externalFiles },
+        },
+      }, function(err, res)
+        if err then
+          vim.print("Error: ", err)
+          return
+        end
 
-      tsclient.request(method, args, function(err)
-        vim.print(err)
+        vim.print "Done!"
       end)
     end
   end
