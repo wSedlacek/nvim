@@ -19,7 +19,7 @@ local servers = {
   "sourcekit",
   "bufls",
   "dockerls",
-  -- "biome",
+  "biome",
   "bashls",
 }
 
@@ -104,11 +104,11 @@ lspconfig.vtsls.setup {
           enableServerSideFuzzyMatch = true,
         },
       },
-      tsserver = {
-        globalPlugins = {
-          { name = "@monodon/typescript-nx-imports-plugin" },
-        },
-      },
+      -- tsserver = {
+      --   globalPlugins = {
+      --     { name = "@monodon/typescript-nx-imports-plugin" },
+      --   },
+      -- },
     },
     typescript = {
       prefrences = {

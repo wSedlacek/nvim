@@ -1309,13 +1309,22 @@ local function format_author(quote, width)
   return formatted
 end
 
+local function add_padding(lines, width)
+  -- Add padding to top and bottom of lines
+  local padding = string.rep(" ", width)
+  table.insert(lines, 1, padding)
+  table.insert(lines, padding)
+
+  return lines
+end
+
 M.get_fortune = function(width)
   -- selects an entry from fortune_list randomly
   math.randomseed(os.time())
   local ind = math.random(1, #fortune_list)
   local selected_quote = fortune_list[ind]
 
-  return format_author(center_quote(format_quote(selected_quote, width), width), width)
+  return add_padding(format_author(center_quote(format_quote(selected_quote, width), width), width), width)
 end
 
 return M

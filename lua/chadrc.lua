@@ -6,41 +6,7 @@ local highlights = require "highlights"
 local fortune = require "fortune"
 
 M.ui = {
-  theme = "oxocarbon",
-
-  hl_override = highlights.override,
-  hl_add = highlights.add,
-
-  lsp = {
-    semantic_tokens = false,
-    signature = true,
-  },
-
-  nvdash = {
-    load_on_startup = true,
-    header = fortune.get_fortune(48),
-    buttons = {
-      { "  Find File", "Spc f f", "Telescope find_files" },
-      { "  Find Project", "Spc f p", "Telescope projects" },
-      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc m t", "Telescope harpoon marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
-    },
-  },
-
-  integrations = {
-    "blankline",
-    "notify",
-    "navic",
-    "trouble",
-    "mason",
-    "codeactionmenu",
-  },
-
   telescope = { style = "borderless" },
-  cheatsheet = { theme = "grid" },
   cmp = {
     style = "atom_colored",
     icons = true,
@@ -89,6 +55,54 @@ M.ui = {
 
         return "%##"
       end,
+    },
+  },
+}
+
+M.lsp = {
+  semantic_tokens = false,
+  signature = true,
+}
+
+M.cheatsheet = {
+  theme = "grid",
+}
+
+M.base46 = {
+  theme = "oxocarbon",
+  hl_override = highlights.override,
+  hl_add = highlights.add,
+
+  integrations = {
+    "blankline",
+    "notify",
+    "navic",
+    "trouble",
+    "mason",
+    "codeactionmenu",
+  },
+}
+
+M.nvdash = {
+  load_on_startup = true,
+  header = fortune.get_fortune(48),
+  buttons = {
+    { txt = " ", hl = "NvDashHidden", no_gap = true, rep = true },
+    { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
+    { txt = "  Find Project", keys = "Spc f p", cmd = "Telescope projects" },
+    { txt = "󰈚  Recent Files", keys = "Spc f o", "Telescope oldfiles" },
+    { txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
+    { txt = "  Bookmarks", keys = "Spc m t", cmd = "Telescope harpoon marks" },
+    { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
+    { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
+
+    {
+      txt = function()
+        local stats = require("lazy").stats()
+        local ms = math.floor(stats.startuptime) .. " ms"
+        return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
+      end,
+      hl = "NvDashLazy",
     },
   },
 }

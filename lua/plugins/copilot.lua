@@ -1,5 +1,6 @@
----@type NvPluginSpec
+--- @type NvPluginSpec
 return {
+  enabled = false,
   "zbirenbaum/copilot.lua",
   event = "InsertEnter",
   opts = {

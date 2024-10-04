@@ -1,6 +1,6 @@
 if vim.g.neovide then
   vim.o.guifont = "IosevkaTerm Nerd Font Mono:h16"
-  vim.opt.linespace = 0 -- Causes cmd to have gaps
+  vim.opt.linespace = 0
 
   vim.o.shell = "fish"
 
@@ -38,14 +38,14 @@ if vim.g.neovide then
   end
 
   -- https://github.com/neovide/neovide/issues/1771
-  vim.api.nvim_create_autocmd({ "BufLeave", "BufNew" }, {
+  vim.api.nvim_create_autocmd({ "BufLeave", "BufNew", "WinEnter", "WinNew" }, {
     callback = function()
       vim.g.neovide_scroll_animation_length = 0
       vim.g.neovide_cursor_animation_length = 0
     end,
   })
 
-  vim.api.nvim_create_autocmd({ "BufEnter", "BufNew" }, {
+  vim.api.nvim_create_autocmd({ "BufEnter", "BufNew", "WinEnter", "WinNew" }, {
     callback = function()
       vim.fn.timer_start(32, function()
         vim.g.neovide_scroll_animation_length = 0.5

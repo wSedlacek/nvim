@@ -414,7 +414,7 @@ map("n", "<C-BS>", "<cmd>copen<cr><cmd>Reject<cr>", {
 
 -- tabufline
 map("n", "<leader>X", function()
-  require("nvchad.tabufline").closeOtherBufs()
+  require("nvchad.tabufline").closeAllBufs(false)
 end, {
   desc = "Close other buffers",
 })

@@ -4,7 +4,9 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   ft = { "qf" },
   cmd = { "TroubleToggle", "Trouble", "TodoTroube" },
-  opts = {},
+  opts = {
+    focus = true,
+  },
   config = function(_, opts)
     require("trouble").setup(opts)
 

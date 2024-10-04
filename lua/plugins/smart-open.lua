@@ -12,7 +12,7 @@ return {
       function()
         require("telescope").extensions.smart_open.smart_open {
           cwd_only = true,
-          filename_first = false,
+          filename_first = true,
         }
       end,
       desc = "Telescope Smart Open",

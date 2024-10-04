@@ -1,7 +1,7 @@
 --- @type NvPluginSpec
 return {
   "wSedlacek/compiler.nvim",
-  enable = false,
+  enabled = false,
   branch = "feat/swift",
   cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
   opts = {},

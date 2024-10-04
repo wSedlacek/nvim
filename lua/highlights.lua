@@ -17,7 +17,12 @@ M.override = {
   ["@include"] = { italic = true },
   ["@repeat"] = { italic = true },
 
-  TelescopePromptNormal = { blend = 100 },
+  TelescopePromptNormal = { blend = 0 },
+
+  -- NvDash
+  NvDashAscii = { fg = "black", bg = "blue" },
+  NvDashButtons = { fg = "white", bg = "black2" },
+  NvDashlazy = { fg = "blue", bg = "black2" },
 }
 
 ---@type HLTable
@@ -47,6 +52,8 @@ M.add = {
   -- Command Prompt
   NoiceCmdlineIcon = { fg = "green" },
   NoiceCmdlinePopup = { bg = "darker_black", blend = 0 },
+
+  NvDashHidden = { fg = "black2", bg = "black2" },
 }
 
 return M

@@ -10,7 +10,7 @@ return {
       },
     }
 
-    local ignore_filetypes = { "neo-tree", "NvimTree", "Outline", "qf", "Trouble", "DiffviewFiles" }
+    local ignore_filetypes = { "neo-tree", "NvimTree", "Outline", "qf", "trouble", "DiffviewFiles" }
     local ignore_buftypes = { "nofile", "prompt", "popup" }
 
     local augroup = vim.api.nvim_create_augroup("FocusDisable", {

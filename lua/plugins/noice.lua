@@ -109,13 +109,27 @@ return {
         opts = { skip = true },
       },
 
-      -- angularls runs at the same time as typescirpt-tools and does not find references
+      -- Hide supermaven startup messages
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "Starting Supermaven..." },
+            { find = "Supermaven Pro is running." },
+          },
+        },
+        opts = { skip = true },
+      },
+
+      -- angularls runs at the same time as vtsls and does not find references
       {
         filter = {
           any = {
             { find = "No information available" },
             { find = "No references found" },
             { find = "No lines in buffer" },
+            { find = "vtsls: .* Cannot find provider for" },
+            { find = "navic: .* Already attached to vtsls" },
           },
         },
         opts = { skip = true },
