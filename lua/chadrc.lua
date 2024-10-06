@@ -69,7 +69,7 @@ M.cheatsheet = {
 }
 
 M.base46 = {
-  theme = "oxocarbon",
+  theme = "github_dark",
   hl_override = highlights.override,
   hl_add = highlights.add,
 
@@ -78,8 +78,9 @@ M.base46 = {
     "notify",
     "navic",
     "trouble",
-    "mason",
     "codeactionmenu",
+    "neogit",
+    "defaults",
   },
 }
 

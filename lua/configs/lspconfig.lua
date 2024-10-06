@@ -1,20 +1,17 @@
 local configs = require "nvchad.configs.lspconfig"
 
-local on_attach = configs.on_attach
-local on_init = configs.on_init
+local nv_on_attach = configs.on_attach
+local nv_on_init = configs.on_init
 local capabilities = configs.capabilities
 ---@diagnostic disable-next-line: different-requires
 local lspconfig = require "lspconfig"
 local util = require "lspconfig.util"
-
-require "configs.diagnostics"
 
 local servers = {
   "html",
   "cssls",
   "marksman",
   "nxls",
-  "ocamllsp",
   "sqlls",
   "sourcekit",
   "bufls",
@@ -22,6 +19,14 @@ local servers = {
   "biome",
   "bashls",
 }
+
+local function on_attach(client, bufnr)
+  nv_on_attach(client, bufnr)
+end
+
+local function on_init(client, bufnr)
+  nv_on_init(client, bufnr)
+end
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -76,15 +81,15 @@ lspconfig.jsonls.setup {
 
 lspconfig.eslint.setup {
   on_init = on_init,
-  capabilities = capabilities,
   on_attach = on_attach,
+  capabilities = capabilities,
   root_dir = util.root_pattern ".git",
 }
 
 lspconfig.typos_lsp.setup {
-  on_init,
-  on_attach,
-  capabilities,
+  on_init = on_init,
+  on_attach = on_attach,
+  capabilities = capabilities,
   init_options = {
     diagnosticSeverity = "Hint",
   },
@@ -104,14 +109,9 @@ lspconfig.vtsls.setup {
           enableServerSideFuzzyMatch = true,
         },
       },
-      -- tsserver = {
-      --   globalPlugins = {
-      --     { name = "@monodon/typescript-nx-imports-plugin" },
-      --   },
-      -- },
     },
     typescript = {
-      prefrences = {
+      preferences = {
         quoteStyle = "auto",
       },
     },

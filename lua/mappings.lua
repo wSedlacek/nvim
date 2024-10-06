@@ -269,7 +269,7 @@ map("n", "<leader>sQ", "<cmd>lua require('persistence').stop()<cr>", {
 map("n", "<leader>lf", "<cmd>EslintFixAll<cr>", {
   desc = "LSP Fix all",
 })
-map("n", "<leader>ld", "<cmd>TroubleToggle document_diagnostics<cr>", {
+map("n", "<leader>ld", "<cmd>Trouble diagnostics<cr>", {
   desc = "LSP Diagnostics",
 })
 map("n", "<leader>lt", "<CMD>TodoTrouble keywords=TODO,FIX,FIXME,BUG,TEST,NOTE<CR>", {
@@ -480,6 +480,18 @@ end, { desc = "Edit snippet" })
 map({ "n", "x" }, "<leader>sa", function()
   require("scissors").addNewSnippet()
 end, { desc = "Add new snippet" })
+
+-- Menu
+vim.keymap.set("n", "<C-t>", function()
+  require("menu").open "default"
+end, {})
+
+vim.keymap.set("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, {})
 
 -- Remove default keymaps
 local unmap = vim.keymap.del

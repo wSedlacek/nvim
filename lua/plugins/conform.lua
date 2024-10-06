@@ -39,7 +39,6 @@ return {
       scss = { "biome", "prettierd", "prettier", stop_after_first = true },
       css = { "biome", "prettierd", "prettier", stop_after_first = true },
       markdown = { "markdownlint" },
-      ocaml = { "ocamlformat" },
       sql = { "pg_format" },
       swift = { "swift_format" },
       proto = { "buf" },
