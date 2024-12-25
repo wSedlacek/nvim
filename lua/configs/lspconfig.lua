@@ -14,7 +14,7 @@ local servers = {
   "nxls",
   "sqlls",
   "sourcekit",
-  "bufls",
+  "buf_ls",
   "dockerls",
   "biome",
   "bashls",
@@ -83,7 +83,20 @@ lspconfig.eslint.setup {
   on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
-  root_dir = util.root_pattern ".git",
+  root_dir = function(fname)
+    local root = lspconfig.util.root_pattern(
+      ".eslintrc.js",
+      ".eslintrc.json",
+      ".eslintrc.yaml",
+      ".eslintrc.yml",
+      ".eslintrc.jsonc"
+    )(fname)
+    if root then
+      return util.root_pattern(".git", ".jj")(fname)
+    end
+
+    return nil
+  end,
 }
 
 lspconfig.typos_lsp.setup {
@@ -99,7 +112,7 @@ lspconfig.vtsls.setup {
   on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
-  root_dir = util.root_pattern ".git",
+  root_dir = util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git", ".jj"),
   filetypes = { "angular", "typescript", "typescriptreact", "javascript", "javascriptreact" },
   settings = {
     vtsls = {

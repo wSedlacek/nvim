@@ -13,7 +13,7 @@ return {
   end,
   opts = {
     detection_methods = { "pattern" },
-    patterns = { "nx.json", ".git" },
+    patterns = { "nx.json", ".git", ".jj" },
   },
   keys = {
     { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Telescope Find projects" },

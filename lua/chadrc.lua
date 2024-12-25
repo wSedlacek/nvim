@@ -69,7 +69,7 @@ M.cheatsheet = {
 }
 
 M.base46 = {
-  theme = "github_dark",
+  theme = "chadracula-evondev",
   hl_override = highlights.override,
   hl_add = highlights.add,
 
@@ -91,7 +91,7 @@ M.nvdash = {
     { txt = " ", hl = "NvDashHidden", no_gap = true, rep = true },
     { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
     { txt = "  Find Project", keys = "Spc f p", cmd = "Telescope projects" },
-    { txt = "󰈚  Recent Files", keys = "Spc f o", "Telescope oldfiles" },
+    { txt = "󰈚  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
     { txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
     { txt = "  Bookmarks", keys = "Spc m t", cmd = "Telescope harpoon marks" },
     { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
@@ -103,7 +103,7 @@ M.nvdash = {
         local ms = math.floor(stats.startuptime) .. " ms"
         return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
       end,
-      hl = "NvDashLazy",
+      hl = "NvDashFooter",
     },
   },
 }

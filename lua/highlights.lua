@@ -22,7 +22,7 @@ M.override = {
   -- NvDash
   NvDashAscii = { fg = "black", bg = "blue" },
   NvDashButtons = { fg = "white", bg = "black2" },
-  NvDashlazy = { fg = "blue", bg = "black2" },
+  NvDashFooter = { fg = "blue", bg = "black2" },
 }
 
 ---@type HLTable

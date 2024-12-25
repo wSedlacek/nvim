@@ -7,7 +7,7 @@ return {
   opts = {
     sources = {
       { name = "nvim_lsp" },
-      { name = "git" },
+      -- { name = "git" }, -- Switched to Jujitsu
       { name = "npm", keyword_length = 4 },
       { name = "luasnip" },
       { name = "luasnip_choice" },
