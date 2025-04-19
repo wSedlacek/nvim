@@ -213,7 +213,10 @@ end, {
 })
 
 -- Github
-map("n", "<leader>gl", "<cmd>GitLink!<cr>", {
+map("n", "<leader>gl", function()
+  local Snacks = require "snacks"
+  Snacks.gitbrowse.open()
+end, {
   desc = "git Open in GitHub",
 })
 map("n", "<leader>gg", "<cmd>Neogit<cr>", {
@@ -249,7 +252,10 @@ map("n", "<leader>gt", "<cmd>Telescope git_status<cr>", {
 map("n", "<leader>gC", "<cmd>Telescope git_commits<cr>", {
   desc = "git commit list",
 })
-map("v", "<leader>gl", "<cmd>GitLink!<cr>", {
+map("v", "<leader>gl", function()
+  local Snacks = require "snacks"
+  Snacks.gitbrowse.open()
+end, {
   desc = "git Open in GitHub",
 })
 
@@ -381,7 +387,10 @@ map("n", "<leader>O", "<cmd>Outline<cr>", {
 })
 
 -- Code
-map("n", "<leader>0", "<cmd>ZenMode<cr>", {
+map("n", "<leader>0", function()
+  local Snacks = require "snacks"
+  Snacks.zen()
+end, {
   desc = "Zen Mode",
 })
 map("n", "<leader>cj", "<cmd>lua require('treesj').toggle()<cr>", {
@@ -438,7 +447,7 @@ map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape terminal mode" })
 map("n", "<leader>h", function()
   require("nvchad.term").new { pos = "sp" }
 
-  -- Trigger siwtch back and forth to automatically resize
+  -- Trigger switch back and forth to automatically resize
   -- nvim-focus/focus.nvim
   vim.cmd [[wincmd k]]
   vim.cmd [[wincmd j]]
@@ -447,7 +456,7 @@ end, { desc = "Terminal New horizontal term" })
 map("n", "<leader>v", function()
   require("nvchad.term").new { pos = "vsp" }
 
-  -- Trigger siwtch back and forth to automatically resize
+  -- Trigger switch back and forth to automatically resize
   -- nvim-focus/focus.nvim
   vim.cmd [[wincmd h]]
   vim.cmd [[wincmd l]]
