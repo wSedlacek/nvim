@@ -21,6 +21,7 @@ return {
       "qf",
       "trouble",
       "DiffviewFiles",
+      "neominimap",
     }
     local ignore_buftypes = {
       "nofile",

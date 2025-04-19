@@ -95,7 +95,7 @@
   "treesj": { "branch": "main", "commit": "f4049f8ba2177e7c5c03fb9e34d4e039c685d744" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
   "twilight.nvim": { "branch": "main", "commit": "1584c0b0a979b71fd86b18d302ba84e9aba85b1b" },
-  "ui": { "branch": "v3.0", "commit": "a9985d803e5de7519d337f93b999184d32adb89c" },
+  "ui": { "branch": "v3.0", "commit": "64388d25813e8f9a74e6813126a1e19b834d0295" },
   "vim-be-good": { "branch": "master", "commit": "0ae3de14eb8efc6effe7704b5e46495e91931cc5" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
   "visual-surround.nvim": { "branch": "main", "commit": "48288830c085f744bf8f5de818d23966245587c8" },

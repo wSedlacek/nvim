@@ -51,9 +51,14 @@ M.add = {
 
   -- Command Prompt
   NoiceCmdlineIcon = { fg = "green" },
-  NoiceCmdlinePopup = { bg = "darker_black", blend = 0 },
+  NoiceCmdlinePopup = { bg = "darker_black", blend = 5 },
 
   NvDashHidden = { fg = "black2", bg = "black2" },
+
+  -- NeoMinimap
+  NeominimapBorder = { bg = "black", blend = 100 },
+  NeominimapBackground = { bg = "black", blend = 100 },
+  NeominimapCursorLine = { bg = "grey", blend = 50 },
 }
 
 return M

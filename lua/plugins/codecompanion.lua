@@ -33,7 +33,7 @@ return {
   },
   keys = {
     { "<D-i>", ":CodeCompanion ", desc = "Inline Code Companion" },
-    { mode = "v", "<D-i>", ":CodeCompanion cool", desc = "Inline Code Companion" },
+    { mode = "v", "<D-i>", ":CodeCompanion ", desc = "Inline Code Companion" },
     { "<D-S-i>", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Code Companion" },
     { "<D-M-i>", ":CodeCompanionCmd ", desc = "Code Companion Command" },
   },

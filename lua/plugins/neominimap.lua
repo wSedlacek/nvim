@@ -11,6 +11,9 @@ return {
       search = {
         enabled = true,
       },
+      float = {
+        window_border = { " " },
+      },
       winopt = function(opt, bufnr)
         opt.cursorlineopt = "both"
       end,

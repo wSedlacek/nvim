@@ -31,7 +31,12 @@ local blacklistedFormats = {
   "codecompanion",
   "",
 }
+
 local function disable_status_column()
+  if vim.bo.filetype == "neominimap" then
+    return
+  end
+
   vim.opt_local.statuscolumn = ""
   vim.opt_local.number = false
   vim.opt_local.numberwidth = 1
