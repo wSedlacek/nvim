@@ -69,7 +69,7 @@ M.cheatsheet = {
 }
 
 M.base46 = {
-  theme = "chadracula-evondev",
+  theme = "oxocarbon",
   hl_override = highlights.override,
   hl_add = highlights.add,
 

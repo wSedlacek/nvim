@@ -1,5 +1,6 @@
 --- @type NvPluginSpec
 return {
+  enabled = true,
   "supermaven-inc/supermaven-nvim",
   event = "InsertEnter",
   cmd = {

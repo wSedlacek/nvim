@@ -10,8 +10,23 @@ return {
       },
     }
 
-    local ignore_filetypes = { "neo-tree", "NvimTree", "Outline", "qf", "trouble", "DiffviewFiles" }
-    local ignore_buftypes = { "nofile", "prompt", "popup" }
+    local always_filetypes = {
+      "codecompanion",
+    }
+
+    local ignore_filetypes = {
+      "neo-tree",
+      "NvimTree",
+      "Outline",
+      "qf",
+      "trouble",
+      "DiffviewFiles",
+    }
+    local ignore_buftypes = {
+      "nofile",
+      "prompt",
+      "popup",
+    }
 
     local augroup = vim.api.nvim_create_augroup("FocusDisable", {
       clear = true,
@@ -21,7 +36,9 @@ return {
       group = augroup,
       callback = function(_)
         vim.schedule(function()
-          if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
+          if
+            vim.tbl_contains(ignore_buftypes, vim.bo.buftype) and not vim.tbl_contains(always_filetypes, vim.bo.ft)
+          then
             vim.b.focus_disable = true
           end
         end)

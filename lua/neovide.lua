@@ -4,7 +4,7 @@ if vim.g.neovide then
 
   vim.o.shell = "fish"
 
-  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_opacity = 0.9
   vim.g.transparency = 1
 
   vim.g.neovide_show_border = false

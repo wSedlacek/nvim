@@ -112,7 +112,15 @@ lspconfig.vtsls.setup {
   on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
-  root_dir = util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git", ".jj"),
+  single_file_support = false,
+  root_dir = function(fname, bufnr)
+    deno_root = util.root_pattern("deno.json", "deno.jsonc")(fname, bufnr)
+    if deno_root then
+      return nil
+    end
+
+    return util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git", ".jj")(fname, bufnr)
+  end,
   filetypes = { "angular", "typescript", "typescriptreact", "javascript", "javascriptreact" },
   settings = {
     vtsls = {
@@ -129,4 +137,13 @@ lspconfig.vtsls.setup {
       },
     },
   },
+}
+
+lspconfig.denols.setup {
+  init_options = {
+    lint = true,
+    unstable = true,
+  },
+  single_file_support = false,
+  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
 }

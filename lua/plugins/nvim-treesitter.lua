@@ -19,7 +19,6 @@ return {
       "regex",
       "helm",
       "proto",
-      "org",
     },
     indent = {
       enable = true,

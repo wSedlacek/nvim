@@ -22,5 +22,6 @@ return {
     set_cursor = true,
     set_cursorline = false,
     set_number = false,
+    set_signcolumn = false,
   },
 }

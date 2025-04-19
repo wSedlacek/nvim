@@ -55,6 +55,8 @@ local blacklistedFormats = {
   "DressingSelect",
   "TelescopePrompt",
   "nvdash",
+  "NvTerm_vsp",
+  "NvTerm_sp",
   "terminal",
   "nvcheatsheet",
   "leetcode.nvim",
