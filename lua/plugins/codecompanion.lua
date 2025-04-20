@@ -6,9 +6,21 @@ return {
     { "nvim-lua/plenary.nvim" },
   },
   opts = {
+    adapters = {
+      githubmodels = function()
+        return require("codecompanion.adapters").extend("githubmodels", {
+          schema = {
+            model = {
+              default = "gpt-4.1",
+            },
+          },
+        })
+      end,
+    },
     strategies = {
-      chat = { adapter = "copilot" },
-      inline = { adapter = "copilot" },
+      chat = { adapter = "githubmodels" },
+      inline = { adapter = "githubmodels" },
+      cmd = { adapter = "githubmodels" },
     },
     opts = {
       -- log_level = "DEBUG",
@@ -35,6 +47,7 @@ return {
     { "<D-i>", ":CodeCompanion ", desc = "Inline Code Companion" },
     { mode = "v", "<D-i>", ":CodeCompanion ", desc = "Inline Code Companion" },
     { "<D-S-i>", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Code Companion" },
+    { "<D-C-i>", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion Actions" },
     { "<D-M-i>", ":CodeCompanionCmd ", desc = "Code Companion Command" },
   },
 }
