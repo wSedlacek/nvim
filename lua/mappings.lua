@@ -216,8 +216,30 @@ end, {
 -- Version Control System
 if env.vsc == "jj" then
   map("n", "<leader>gj", function()
+    local function opts_to_id(id)
+      for _, opts in pairs(vim.g.nvchad_terms) do
+        if opts.id == id then
+          return opts
+        end
+      end
+    end
+
     local nvterm = require "nvchad.term"
     nvterm.runner { pos = "sp", id = "jj", cmd = "lazyjj && exit || exit" }
+
+    local opts = opts_to_id "jj"
+
+    vim.api.nvim_create_autocmd("TermClose", {
+      callback = function(args)
+        if args.buf ~= opts.buf then
+          return
+        end
+
+        vim.schedule(function()
+          vim.api.nvim_buf_delete(opts.buf, {})
+        end)
+      end,
+    })
   end, { desc = "vsc Open Version Control" })
 end
 
