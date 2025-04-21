@@ -69,7 +69,7 @@ M.cheatsheet = {
 }
 
 M.base46 = {
-  theme = "radium",
+  theme = "github_dark",
   hl_override = highlights.override,
   hl_add = highlights.add,
 

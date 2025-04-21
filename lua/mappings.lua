@@ -344,7 +344,47 @@ map("n", "\\", "<cmd>Telescope resume<cr>", {
 map("n", "<leader>mm", "<cmd>lua require('harpoon'):list():add()<cr>", {
   desc = "Mark file",
 })
-map("n", "<leader>mt", "<cmd>Telescope harpoon marks<cr>", {
+map("n", "<leader>mt", function()
+  local conf = require("telescope.config").values
+  local harpoon = require "harpoon"
+  local harpoon_files = harpoon:list()
+  local finder = function()
+    local paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+      table.insert(paths, item.value)
+    end
+
+    return require("telescope.finders").new_table {
+      results = paths,
+    }
+  end
+
+  require("telescope.pickers")
+    .new({}, {
+      prompt_title = "Harpoon",
+      finder = finder(),
+      previewer = false,
+      sorter = conf.generic_sorter {},
+      layout_config = {
+        height = 0.4,
+        width = 0.5,
+        prompt_position = "top",
+        preview_cutoff = 120,
+      },
+      attach_mappings = function(prompt_bufnr, map)
+        map("i", "<C-d>", function()
+          local state = require "telescope.actions.state"
+          local selected_entry = state.get_selected_entry()
+          local current_picker = state.get_current_picker(prompt_bufnr)
+
+          table.remove(harpoon_files.items, selected_entry.index)
+          current_picker:refresh(finder())
+        end)
+        return true
+      end,
+    })
+    :find()
+end, {
   desc = "Toggle UI",
 })
 map("n", "<leader>ma", "<cmd>lua require('harpoon'):list():select(1)<cr>", {

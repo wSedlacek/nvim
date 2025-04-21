@@ -1,6 +1,5 @@
 --- @type NvPluginSpec
 return {
-  enabled = false,
   "lukas-reineke/indent-blankline.nvim",
   opts = {
     exclude = {

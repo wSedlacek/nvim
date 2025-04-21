@@ -1,6 +1,8 @@
+local ai = require "ai"
+
 --- @type NvPluginSpec
 return {
-  enabled = true,
+  enabled = ai.default == "supermaven",
   "supermaven-inc/supermaven-nvim",
   event = "InsertEnter",
   cmd = {

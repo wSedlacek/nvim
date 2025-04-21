@@ -2,7 +2,8 @@
 return {
   "nvim-tree/nvim-tree.lua",
   opts = {
-    git = { enable = false },
+    disable_netrw = true,
+    git = { enable = true },
 
     renderer = {
       highlight_git = true,

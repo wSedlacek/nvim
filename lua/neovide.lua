@@ -4,11 +4,13 @@ if vim.g.neovide then
 
   vim.o.shell = "fish"
 
-  vim.g.neovide_opacity = 0.9
+  vim.g.neovide_opacity = 0.75
   vim.g.transparency = 1
 
+  vim.g.neovide_floating_corner_radius = 0.5
+
   vim.g.neovide_show_border = false
-  vim.g.neovide_floating_shadow = false
+  vim.g.neovide_floating_shadow = true
   vim.g.neovide_floating_z_height = 10
   vim.g.neovide_light_angle_degrees = 45
   vim.g.neovide_light_radius = 5
@@ -26,9 +28,10 @@ if vim.g.neovide then
 
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_underline_automatic_scaling = true
-  vim.g.neovide_confirm_quit = false
+  vim.g.neovide_confirm_quit = true
   vim.g.neovide_profiler = false
   vim.g.neovide_cursor_vfx_mode = ""
+  vim.g.neovide_cursor_animate_in_insert_mode = true
 
   local current_directory = vim.fn.getcwd()
 

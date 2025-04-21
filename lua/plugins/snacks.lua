@@ -10,7 +10,10 @@ return {
     git = { enabled = false },
     gitbrowse = { enabled = true },
     image = { enabled = false },
-    indent = { enabled = true },
+    indent = {
+      enabled = true,
+      only_current = true,
+    },
     input = { enabled = true },
     lazygit = { enabled = false },
     notify = { enabled = false },

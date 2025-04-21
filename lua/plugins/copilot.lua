@@ -1,6 +1,8 @@
+local ai = require "ai"
+
 --- @type NvPluginSpec
 return {
-  enabled = false,
+  enabled = ai.default == "copilot",
   "zbirenbaum/copilot.lua",
   event = "InsertEnter",
   opts = {
