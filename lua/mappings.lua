@@ -1,6 +1,7 @@
 require "nvchad.mappings"
 
 local map = vim.keymap.set
+local env = require "env"
 
 if vim.g.neovide then
   vim.g.neovide_scale_factor = 0.9
@@ -212,51 +213,46 @@ end, {
   desc = "Run file tests",
 })
 
--- Github
+-- Version Control System
+if env.vsc == "jj" then
+  map("n", "<leader>gj", function()
+    local nvterm = require "nvchad.term"
+    nvterm.runner { pos = "sp", id = "jj", cmd = "lazyjj && exit || exit" }
+  end, { desc = "vsc Open Version Control" })
+end
+
 map("n", "<leader>gl", function()
   local Snacks = require "snacks"
   Snacks.gitbrowse.open()
 end, {
-  desc = "git Open in GitHub",
-})
-map("n", "<leader>gg", "<cmd>Neogit<cr>", {
-  desc = "git Open Version Control",
-})
-map("n", "<leader>gc", "<cmd>Neogit commit<cr>", {
-  desc = "git commit",
-})
-map("n", "<leader>gp", "<cmd>Neogit push<cr>", {
-  desc = "git push",
-})
-map("n", "<leader>gr", "<cmd>Neogit rebase<cr>", {
-  desc = "git rebase",
+  desc = "vsc Open in GitHub",
 })
 map("n", "<leader>gP", function()
   local nvterm = require "nvchad.term"
   nvterm.runner { pos = "float", id = "gh", cmd = "gh pr create" }
 end, {
-  desc = "git pr create",
+  desc = "vsc pr create",
 })
 map("n", "<leader>gP", "<cmd>Octo pr list<CR>", {
-  desc = "git pr list",
+  desc = "vsc pr list",
 })
 map("n", "<leader>gi", "<cmd>Octo issue list<CR>", {
-  desc = "git issue list",
+  desc = "vsc issue list",
 })
 map("n", "<leader>go", "<cmd>Octo actions<CR>", {
-  desc = "git list actions",
+  desc = "vsc list actions",
 })
 map("n", "<leader>gt", "<cmd>Telescope git_status<cr>", {
-  desc = "git status",
+  desc = "vsc status",
 })
 map("n", "<leader>gC", "<cmd>Telescope git_commits<cr>", {
-  desc = "git commit list",
+  desc = "vsc commit list",
 })
 map("v", "<leader>gl", function()
   local Snacks = require "snacks"
   Snacks.gitbrowse.open()
 end, {
-  desc = "git Open in GitHub",
+  desc = "vsc Open in GitHub",
 })
 
 -- Session
@@ -443,10 +439,14 @@ map("n", "Q", function()
   if trouble.is_open() then
     trouble.close()
   else
-    vim.cmd [[QFToggle!]]
+    -- try to require qf_helper if it fails then skip
+    local call = pcall(require, "qf_helper")
+    if call then
+      vim.cmd [[Cclose]]
+    end
   end
 end, {
-  desc = "Toggle Quickfix",
+  desc = "Close Quickfix",
 })
 map("n", "<C-0>", "<cmd>Cclear<cr><cmd>cclose<cr>", {
   desc = "Clear Quickfix",

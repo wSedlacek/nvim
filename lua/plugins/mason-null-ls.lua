@@ -17,6 +17,7 @@ return {
       "dockerfile-language-server",
       "emmet-ls",
       "eslint-lsp",
+      "hadolint",
       "helm-ls",
       "html-lsp",
       "json-lsp",

@@ -1,10 +1,11 @@
-local ai = require "ai"
+local env = require "env"
 
 --- @type NvPluginSpec
 return {
-  enabled = ai.default == "copilot",
+  enabled = env.ai == "copilot",
   "zbirenbaum/copilot.lua",
   event = "InsertEnter",
+  cmd = { "Copilot" },
   opts = {
     filetypes = { yaml = true },
     suggestion = {
