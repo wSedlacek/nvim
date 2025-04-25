@@ -33,12 +33,14 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = ""
   vim.g.neovide_cursor_animate_in_insert_mode = true
 
-  local current_directory = vim.fn.getcwd()
-
-  if current_directory == "/" then
-    local path_to_desktop = "~/Code"
-    vim.cmd("cd " .. path_to_desktop)
-  end
+  vim.schedule(function()
+    local current_directory = vim.fn.getcwd()
+    local home_directory = vim.fn.expand "~"
+    if current_directory == "/" or current_directory == home_directory then
+      local cored_directory = "~/Code"
+      vim.cmd("cd " .. cored_directory)
+    end
+  end)
 
   -- https://github.com/neovide/neovide/issues/1771
   vim.api.nvim_create_autocmd({ "BufLeave", "BufNew", "WinEnter", "WinNew" }, {
