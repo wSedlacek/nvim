@@ -69,7 +69,7 @@ M.cheatsheet = {
 }
 
 M.base46 = {
-  theme = "github_dark",
+  theme = "gatekeeper",
   hl_override = highlights.override,
   hl_add = highlights.add,
 
