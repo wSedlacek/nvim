@@ -1,16 +1,16 @@
 local configs = require "nvchad.configs.lspconfig"
 local util = require "lspconfig.util"
 
-local nv_on_attach = configs.on_attach
 local nv_on_init = configs.on_init
+local nv_on_attach = configs.on_attach
 local nv_capabilities = configs.capabilities
-
-local function on_attach(client, bufnr)
-  nv_on_attach(client, bufnr)
-end
 
 local function on_init(client, bufnr)
   nv_on_init(client, bufnr)
+end
+
+local function on_attach(client, bufnr)
+  nv_on_attach(client, bufnr)
 end
 
 local capabilities = vim.tbl_deep_extend("force", nv_capabilities, {})
