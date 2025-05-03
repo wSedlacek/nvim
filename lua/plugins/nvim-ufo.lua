@@ -2,7 +2,7 @@
 return {
   {
     "kevinhwang91/nvim-ufo",
-    event = "VimEnter",
+    event = "VeryLazy",
     init = function()
       vim.o.foldlevel = 99 -- Using ufo provider need a large value
       vim.o.foldlevelstart = 99

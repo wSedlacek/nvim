@@ -1,7 +1,7 @@
 ---@type NvPluginSpec
 return {
   "stevearc/dressing.nvim",
-  event = "UIEnter",
+  event = "VeryLazy",
   opts = {
     win_options = {
       winhighlight = "NormalFloat:DiagnosticError",
