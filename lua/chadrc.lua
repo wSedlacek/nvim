@@ -69,7 +69,7 @@ M.cheatsheet = {
 }
 
 M.base46 = {
-  theme = "gatekeeper",
+  theme = "material-deep-ocean",
   hl_override = highlights.override,
   hl_add = highlights.add,
 
