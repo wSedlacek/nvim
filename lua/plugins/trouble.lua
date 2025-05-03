@@ -6,6 +6,21 @@ return {
   cmd = { "TroubleToggle", "Trouble", "TodoTroube" },
   opts = {
     focus = true,
+    auto_jump = false,
+    auto_preview = true,
+    preview = {
+      type = "split",
+      position = "right",
+      relative = "win",
+      size = 0.5,
+      on_mount = function(self)
+        vim.cmd [[Neominimap TabDisable]]
+      end,
+    },
+    keys = {
+      ["<tab>"] = "next",
+      ["<s-tab>"] = "prev",
+    },
   },
   config = function(_, opts)
     require("trouble").setup(opts)
@@ -31,6 +46,12 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       pattern = { "qf" },
       callback = use_trouble,
+    })
+
+    vim.api.nvim_create_autocmd("BufDelete", {
+      callback = function()
+        vim.cmd [[Trouble close]]
+      end,
     })
   end,
 }
