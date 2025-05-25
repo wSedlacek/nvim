@@ -7,7 +7,7 @@ return {
     vim.opt.sidescrolloff = 36
 
     vim.g.neominimap = {
-      auto_enable = true,
+      auto_enable = false,
       search = {
         enabled = true,
       },
