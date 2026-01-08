@@ -42,9 +42,6 @@ return {
         },
       },
     },
-    popupmenu = {
-      -- backend = "cmp", -- Has issues after first completion
-    },
     views = {
       cmdline_popup = {
         border = {

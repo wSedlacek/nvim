@@ -348,9 +348,6 @@ end, {
 map("n", "<leader>fs", "<cmd>Telescope ast_grep<cr>", {
   desc = "Telescope Find AST",
 })
-map("n", "<leader>fi", "<cmd>Telescope import<cr>", {
-  desc = "Telescope Find import",
-})
 map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", {
   desc = "Telescope Find keymaps",
 })

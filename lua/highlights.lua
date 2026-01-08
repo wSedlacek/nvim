@@ -19,10 +19,12 @@ M.override = {
 
   TelescopePromptNormal = { blend = 0 },
 
-  -- NvDash
+  -- NvDash - set backgrounds to match for consistent appearance
   NvDashAscii = { fg = "black", bg = "blue" },
   NvDashButtons = { fg = "white", bg = "black2" },
   NvDashFooter = { fg = "blue", bg = "black2" },
+  -- Set Normal background for dashboard to match buttons (gaps use Normal)
+  Normal = { bg = "black2" },
 }
 
 ---@type HLTable

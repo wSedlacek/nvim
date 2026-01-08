@@ -1,5 +1,8 @@
+local env = require "env"
+
 --- @type NvPluginSpec
 return {
+  enabled = env.ai_chat == "copilot",
   "olimorris/codecompanion.nvim",
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },
