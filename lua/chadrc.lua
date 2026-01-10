@@ -86,16 +86,16 @@ M.base46 = {
 
 M.nvdash = {
   load_on_startup = true,
-  header = fortune.get_fortune(48),
+  header = fortune.get_fortune(44, 2, 2),
   buttons = {
     { txt = " ", hl = "NvDashHidden", no_gap = true, rep = true },
-    { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files", hl = "NvDashButtons" },
-    { txt = "  Find Project", keys = "Spc f p", cmd = "Telescope projects", hl = "NvDashButtons" },
-    { txt = "󰈚  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles", hl = "NvDashButtons" },
-    { txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep", hl = "NvDashButtons" },
-    { txt = "  Bookmarks", keys = "Spc m t", cmd = "Telescope harpoon marks", hl = "NvDashButtons" },
-    { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes", hl = "NvDashButtons" },
-    { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet", hl = "NvDashButtons" },
+    { txt = "   Find File", keys = "Spc f f ", cmd = "Telescope find_files", hl = "NvDashButtons" },
+    { txt = "   Find Project", keys = "Spc f p ", cmd = "Telescope projects", hl = "NvDashButtons" },
+    { txt = " 󰈚  Recent Files", keys = "Spc f o ", cmd = "Telescope oldfiles", hl = "NvDashButtons" },
+    { txt = " 󰈭  Find Word", keys = "Spc f w ", cmd = "Telescope live_grep", hl = "NvDashButtons" },
+    { txt = "   Bookmarks", keys = "Spc m t ", cmd = "Telescope harpoon marks", hl = "NvDashButtons" },
+    { txt = "   Themes", keys = "Spc t h ", cmd = "Telescope themes", hl = "NvDashButtons" },
+    { txt = "   Mappings", keys = "Spc c h ", cmd = "NvCheatsheet", hl = "NvDashButtons" },
 
     {
       txt = function()

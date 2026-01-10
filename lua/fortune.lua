@@ -1318,13 +1318,34 @@ local function add_padding(lines, width)
   return lines
 end
 
-M.get_fortune = function(width)
+local function add_horizontal_padding(lines, left_pad, right_pad)
+  -- Add left and right padding to each line
+  local padded = {}
+  local left_pad_str = string.rep(" ", left_pad)
+  local right_pad_str = string.rep(" ", right_pad or 0)
+
+  for _, line in ipairs(lines) do
+    table.insert(padded, left_pad_str .. line .. right_pad_str)
+  end
+
+  return padded
+end
+
+M.get_fortune = function(width, left_pad, right_pad)
   -- selects an entry from fortune_list randomly
   math.randomseed(os.time())
   local ind = math.random(1, #fortune_list)
   local selected_quote = fortune_list[ind]
 
-  return add_padding(format_author(center_quote(format_quote(selected_quote, width), width), width), width)
+  left_pad = left_pad or 0
+  right_pad = right_pad or 0
+  local formatted = add_padding(format_author(center_quote(format_quote(selected_quote, width), width), width), width)
+
+  if left_pad > 0 or right_pad > 0 then
+    formatted = add_horizontal_padding(formatted, left_pad, right_pad)
+  end
+
+  return formatted
 end
 
 return M
