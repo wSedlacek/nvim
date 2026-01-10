@@ -21,8 +21,10 @@ require("lazy").setup({
     lazy = false,
     branch = "v2.5",
     import = "nvchad.plugins",
-    config = function()
+    init = function()
+      require "nvchad.autocmds"
       require "options"
+      require "mappings"
     end,
   },
 
@@ -35,15 +37,9 @@ dofile(vim.g.base46_cache .. "statusline")
 dofile(vim.g.base46_cache .. "syntax")
 dofile(vim.g.base46_cache .. "treesitter")
 
-require "nvchad.autocmds"
-
 require "neovide"
 require "statuscolumn"
 require "filetypes"
 require "autocmds"
 require "commands"
 require "snippets"
-
-vim.schedule(function()
-  require "mappings"
-end)

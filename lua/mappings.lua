@@ -1,4 +1,11 @@
+-- Save lazy-loaded plugin keys before loading NvChad base mappings
+local lazy_keys_util = require "utils.lazy_keys"
+local saved_keys = lazy_keys_util.save()
+
+-- Load NvChad base mappings (may overwrite plugin keys)
 require "nvchad.mappings"
+
+lazy_keys_util.restore(saved_keys)
 
 local map = vim.keymap.set
 local env = require "env"
