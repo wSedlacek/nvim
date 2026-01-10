@@ -15,6 +15,7 @@ return {
       desc = "LSP Restart Language Server",
     },
     {
+      ft = { "typescript", "typescriptreact" },
       "<leader>ci",
       function()
         require("vtsls").commands.remove_unused_imports()
@@ -22,6 +23,7 @@ return {
       desc = "TypeScript Remove Unused Imports",
     },
     {
+      ft = { "typescript", "typescriptreact" },
       "<leader>cI",
       function()
         require("vtsls").commands.add_missing_imports()
@@ -29,6 +31,7 @@ return {
       desc = "TypeScript Add Missing Imports",
     },
     {
+      ft = { "typescript", "typescriptreact" },
       "<leader>rf",
       function()
         require("vtsls").commands.rename_file()

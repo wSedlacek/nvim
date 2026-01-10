@@ -4,7 +4,7 @@ return {
   event = "VeryLazy",
   dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
   keys = {
-    { "<leader>n", "<cmd>Noice telescope<cr>", desc = "Notifications" },
+    { "<leader>N", "<cmd>Noice telescope<cr>", desc = "Notifications" },
     {
       "<Esc>",
       function()

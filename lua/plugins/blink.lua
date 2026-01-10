@@ -1,5 +1,7 @@
+local env = require "env"
+
 --- @type NvPluginSpec
 return {
-  enabled = false,
+  enabled = env.completion == "blink",
   import = "nvchad.blink.lazyspec",
 }
