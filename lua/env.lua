@@ -1,6 +1,6 @@
 -- Check environment variables for NVIM_AI (possible values, supermaven, copilot, etc.)
 local default_ai = "supermaven"
-local default_ai_chat = "claudecode"
+local default_ai_chat = "opencode"
 local default_vsc = "jj"
 local default_completion = "blink"
 

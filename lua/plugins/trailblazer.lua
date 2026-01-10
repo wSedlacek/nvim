@@ -1,5 +1,6 @@
 ---@type NvPluginSpec
 return {
+  enabled = false,
   "LeonHeidelbach/trailblazer.nvim",
   event = "VeryLazy",
   opts = {
