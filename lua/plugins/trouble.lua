@@ -4,6 +4,29 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   ft = { "qf" },
   cmd = { "TroubleToggle", "Trouble", "TodoTroube" },
+  keys = {
+    { "<leader>ld", "<cmd>Trouble diagnostics<cr>", desc = "LSP Diagnostics" },
+    {
+      "<leader>lt",
+      "<CMD>TodoTrouble keywords=TODO,FIX,FIXME,BUG,TEST,NOTE<CR>",
+      desc = "LSP Todo/Fix/Fixme",
+    },
+    {
+      "Q",
+      function()
+        local trouble = require "trouble"
+        if trouble.is_open() then
+          trouble.close()
+        else
+          local call = pcall(require, "qf_helper")
+          if call then
+            vim.cmd [[Cclose]]
+          end
+        end
+      end,
+      desc = "Close Quickfix",
+    },
+  },
   opts = {
     focus = true,
     auto_jump = false,

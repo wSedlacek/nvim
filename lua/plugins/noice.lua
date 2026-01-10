@@ -3,6 +3,42 @@ return {
   "folke/noice.nvim",
   event = "VeryLazy",
   dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+  keys = {
+    { "<leader>n", "<cmd>Noice telescope<cr>", desc = "Notifications" },
+    {
+      "<Esc>",
+      function()
+        vim.cmd [[noh]]
+        require("noice.lsp.docs").on_close()
+      end,
+      desc = "Close",
+      mode = "n",
+    },
+    {
+      "<C-f>",
+      function()
+        if not require("noice.lsp").scroll(4) then
+          return "<c-f>"
+        end
+      end,
+      desc = "Scroll down",
+      mode = { "n", "i", "s" },
+      silent = true,
+      expr = true,
+    },
+    {
+      "<C-b>",
+      function()
+        if not require("noice.lsp").scroll(-4) then
+          return "<c-b>"
+        end
+      end,
+      desc = "Scroll up",
+      mode = { "n", "i", "s" },
+      silent = true,
+      expr = true,
+    },
+  },
   opts = {
     cmdline = {
       format = {

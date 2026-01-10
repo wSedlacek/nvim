@@ -4,6 +4,11 @@ return {
   enabled = false,
   branch = "feat/swift",
   cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+  keys = {
+    { "<D-b>", "<cmd>CompilerOpen<cr>", desc = "Open compiler" },
+    { "<D-B>", "<cmd>CompilerStop<cr><cmd>CompilerRedo<cr>", desc = "Stop and redo" },
+    { "<D-r>", "<cmd>CompilerToggleResults<cr>", desc = "Toggle results" },
+  },
   opts = {},
   dependencies = {
     {

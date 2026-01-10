@@ -2,6 +2,13 @@
 return {
   "stevearc/oil.nvim",
   event = "UIEnter",
+  keys = {
+    {
+      "-",
+      "<cmd>Oil<cr>",
+      desc = "Open parent directory",
+    },
+  },
   opts = {
     view_options = { show_hidden = false },
   },

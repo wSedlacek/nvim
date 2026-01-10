@@ -2,6 +2,9 @@
 return {
   "nvim-focus/focus.nvim",
   event = "VeryLazy",
+  keys = {
+    { "<C-w>f", "<cmd>FocusToggle<cr>", desc = "Toggle Focus" },
+  },
   config = function()
     require("focus").setup {
       ui = {

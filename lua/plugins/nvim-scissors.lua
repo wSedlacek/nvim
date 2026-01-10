@@ -6,7 +6,20 @@ return {
     snippetDir = vim.fn.stdpath "config" .. "/lua/snippets/vscode/custom",
   },
   keys = {
-    "<leader>sa",
-    "<leader>se",
+    {
+      "<leader>se",
+      function()
+        require("scissors").editSnippet()
+      end,
+      desc = "Edit snippet",
+    },
+    {
+      "<leader>sa",
+      function()
+        require("scissors").addNewSnippet()
+      end,
+      desc = "Add new snippet",
+      mode = { "n", "x" },
+    },
   },
 }

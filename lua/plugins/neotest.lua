@@ -3,6 +3,22 @@ return {
   "nvim-neotest/neotest",
   enabled = false,
   event = "VeryLazy",
+  keys = {
+    {
+      "<leader>ct",
+      function()
+        require("neotest").run.run()
+      end,
+      desc = "Run nearest test",
+    },
+    {
+      "<leader>cf",
+      function()
+        require("neotest").run.run(vim.fn.expand "%")
+      end,
+      desc = "Run file tests",
+    },
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",

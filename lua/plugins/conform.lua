@@ -22,6 +22,15 @@ return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
   cmd = { "ConformInfo" },
+  keys = {
+    {
+      "<leader>fm",
+      function()
+        require("conform").format()
+      end,
+      desc = "File Format with conform",
+    },
+  },
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
