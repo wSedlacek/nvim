@@ -14,7 +14,6 @@ return {
       "tsx",
       "markdown",
       "markdown_inline",
-      "swift",
       "bash",
       "regex",
       "helm",
