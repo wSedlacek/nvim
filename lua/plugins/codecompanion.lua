@@ -7,17 +7,33 @@ return {
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },
     { "nvim-lua/plenary.nvim" },
+    { "ravitemer/mcphub.nvim" },
   },
   opts = {
+    extensions = {
+      mcphub = {
+        callback = "mcphub.extensions.codecompanion",
+        opts = {
+          show_result_in_chat = true,
+          make_vars = true,
+          make_slash_commands = true,
+        },
+      },
+    },
     adapters = {
       githubmodels = function()
         return require("codecompanion.adapters").extend("githubmodels", {
-          schema = {
-            model = {
-              default = "gpt-4.1",
-            },
-          },
+          schema = { model = { default = "gpt-4.1" } },
         })
+      end,
+      copilot_cli = function()
+        return require("codecompanion.adapters").extend("copilot_cli", {})
+      end,
+      opencode = function()
+        return require("codecompanion.adapters").extend("opencode", {})
+      end,
+      claude_code = function()
+        return require("codecompanion.adapters").extend("claude_code", {})
       end,
     },
     strategies = {

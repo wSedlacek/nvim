@@ -5,6 +5,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "mfussenegger/nvim-dap",
+    "jay-babu/mason-nvim-dap.nvim",
   },
   ft = { "rust" },
   config = function()
