@@ -42,12 +42,6 @@ M.add = {
   DiagnosticVirtualTextWarn = { link = "Comment" },
   DiagnosticVirtualTextError = { link = "Comment" },
 
-  -- Leap
-  LeapBackdrop = { link = "Comment" },
-  LeapMatch = { fg = "white", bold = true, nocombine = true },
-  LeapLabelPrimary = { fg = "red", bold = true, nocombine = true },
-  LeapLabelSecondary = { fg = "blue", bold = true, nocombine = true },
-
   -- Messages
   NoiceLspProgressTitle = { link = "Normal" },
 

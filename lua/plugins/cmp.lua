@@ -25,6 +25,7 @@ return {
       { name = "luasnip" },
       { name = "luasnip_choice" },
       { name = "nvim_lua" },
+      { name = "buffer" },
       { name = "path" },
       { name = "orgmode" },
     }
@@ -34,7 +35,6 @@ return {
     end
 
     opts.sources = sources
-    vim.print(opts)
     require("cmp").setup(opts)
   end,
 }

@@ -143,6 +143,9 @@ if env.vsc == "jj" then
     nvterm.runner { pos = "sp", id = "jj", cmd = "lazyjj && exit || exit" }
 
     local opts = opts_to_id "jj"
+    if not opts then
+      return
+    end
 
     vim.api.nvim_create_autocmd("TermClose", {
       callback = function(args)
@@ -237,6 +240,16 @@ vim.keymap.set("n", "<RightMouse>", function()
   local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
   require("menu").open(options, { mouse = true })
 end, {})
+
+-- Copilot CLI
+if env.ai_chat == "copilot-cli" then
+  map({ "n", "t" }, "<C-.>", function()
+    require("snacks").terminal.toggle("copilot", {
+      win = { position = "right", width = 0.4 },
+      cwd = vim.fn.getcwd(),
+    })
+  end, { desc = "Toggle Copilot CLI" })
+end
 
 -- Remove default keymaps
 local unmap = vim.keymap.del

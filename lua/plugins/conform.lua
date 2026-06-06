@@ -17,7 +17,7 @@ end, {
   desc = "Re-enable autoformat-on-save",
 })
 
-local slow_format_filetypes = { "typescript", "javascript", "swift" }
+local slow_format_filetypes = { typescript = true, javascript = true, swift = true }
 return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
@@ -68,7 +68,7 @@ return {
         return
       end
 
-      return { lsp_fallback = true }
+      return { lsp_format = "fallback" }
     end,
   },
 }

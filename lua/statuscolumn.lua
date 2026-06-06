@@ -41,22 +41,15 @@ local function disable_status_column()
   vim.opt_local.number = false
   vim.opt_local.numberwidth = 1
   vim.opt_local.relativenumber = false
-  vim.opt_local.number = false
 end
 
 local relativeStatusColumn = "%= %{v:virtnum == 0 ? (v:relnum ? v:relnum : v:lnum) : ''}%=│%s"
 local normalStatusColumn = "%= %l%=│%#WarningMsg#%s"
 
--- With sepaartor.
-
-local fileType = vim.api.nvim_get_option_value("ft", { buf = 0 })
-if vim.tbl_contains(blacklistedFormats, fileType) then
-  disable_status_column()
-else
-  vim.opt.numberwidth = 5
-  vim.opt.relativenumber = true
-  vim.opt.statuscolumn = relativeStatusColumn
-end
+-- Set defaults; augroups below handle per-filetype adjustments on BufEnter/WinEnter.
+vim.opt.numberwidth = 5
+vim.opt.relativenumber = true
+vim.opt.statuscolumn = relativeStatusColumn
 
 local augroup = vim.api.nvim_create_augroup("numbertoggle", {})
 

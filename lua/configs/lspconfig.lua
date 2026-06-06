@@ -143,7 +143,8 @@ local servers = {
 
 for _, lsp in ipairs(servers) do
   local lsp_name = type(lsp) == "table" and lsp[1] or lsp
-  local lsp_config = type(lsp) == "table" and lsp or {}
+  local lsp_config = type(lsp) == "table" and vim.tbl_extend("force", {}, lsp) or {}
+  lsp_config[1] = nil
 
   if not lsp_config.on_init then
     lsp_config.on_init = on_init

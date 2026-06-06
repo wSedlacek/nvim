@@ -3,7 +3,7 @@ return {
   "folke/trouble.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   ft = { "qf" },
-  cmd = { "TroubleToggle", "Trouble", "TodoTroube" },
+  cmd = { "TroubleToggle", "Trouble", "TodoTrouble" },
   keys = {
     { "<leader>ld", "<cmd>Trouble diagnostics<cr>", desc = "LSP Diagnostics" },
     {
@@ -71,10 +71,5 @@ return {
       callback = use_trouble,
     })
 
-    vim.api.nvim_create_autocmd("BufDelete", {
-      callback = function()
-        vim.cmd [[Trouble close]]
-      end,
-    })
   end,
 }

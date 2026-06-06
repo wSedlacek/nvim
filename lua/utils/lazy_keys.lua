@@ -10,7 +10,6 @@ function M.save()
     for _, keymap in ipairs(vim.api.nvim_get_keymap(mode)) do
       -- Lazy.nvim marks its keymaps with special descriptions
       if keymap.desc and keymap.desc:match "^%[%[" then
-        vim.print(keymap.desc)
         lazy_keys[mode][keymap.lhs] = keymap
       end
     end

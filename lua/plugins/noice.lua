@@ -9,7 +9,7 @@ return {
       "<Esc>",
       function()
         vim.cmd [[noh]]
-        require("noice.lsp.docs").on_close()
+        require("noice").cmd("dismiss")
       end,
       desc = "Close",
       mode = "n",

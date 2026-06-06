@@ -71,7 +71,7 @@ return {
       function()
         require("opencode").command "session.half.page.up"
       end,
-      mode = "n",
+      mode = { "n", "t" },
       desc = "opencode half page up",
     },
     {
@@ -79,7 +79,7 @@ return {
       function()
         require("opencode").command "session.half.page.down"
       end,
-      mode = "n",
+      mode = { "n", "t" },
       desc = "opencode half page down",
     },
   },
