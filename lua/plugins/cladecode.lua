@@ -9,12 +9,13 @@ return {
     terminal = {
       provider = "snacks",
       split_side = "right",
-      split_width_percentage = 0.35,
+      split_width_percentage = 0.40,
       auto_close = true,
     },
     diff_opts = {
       layout = "vertical",
-      open_in_new_tab = false,
+      open_in_new_tab = true,
+      keep_terminal_focus = true,
     },
     track_selection = true,
     focus_after_send = true,

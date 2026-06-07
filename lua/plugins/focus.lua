@@ -26,6 +26,7 @@ return {
       "DiffviewFiles",
       "neominimap",
       "opencode_terminal",
+      "snacks_terminal",
     }
     local ignore_buftypes = {
       "nofile",

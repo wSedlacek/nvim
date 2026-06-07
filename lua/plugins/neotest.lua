@@ -1,5 +1,6 @@
 ---@type NvPluginSpec
 return {
+  enabled = false,
   "nvim-neotest/neotest",
   event = "VeryLazy",
   keys = {
@@ -56,6 +57,7 @@ return {
     "rouge8/neotest-rust",
     "haydenmeade/neotest-jest",
     "marilari88/neotest-vitest",
+    "mmllr/neotest-swift-testing",
     "nvim-neotest/nvim-nio",
   },
   config = function()
@@ -102,6 +104,7 @@ return {
               or vim.fn.getcwd()
           end,
         },
+        require "neotest-swift-testing",
         require "neotest-rust" {
           args = { "--no-capture" },
           dap_adapter = "codelldb",
