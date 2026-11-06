@@ -146,6 +146,11 @@ for _, lsp in ipairs(servers) do
   local lsp_config = type(lsp) == "table" and vim.tbl_extend("force", {}, lsp) or {}
   lsp_config[1] = nil
 
+  -- Avoid Neovim 0.12 "invalid config" spam when the binary isn't installed.
+  if lsp_name == "denols" and vim.fn.executable "deno" == 0 then
+    goto continue
+  end
+
   if not lsp_config.on_init then
     lsp_config.on_init = on_init
   end
@@ -165,4 +170,6 @@ for _, lsp in ipairs(servers) do
     local lspconfig = require "lspconfig"
     lspconfig[lsp_name].setup(lsp_config)
   end
+
+  ::continue::
 end

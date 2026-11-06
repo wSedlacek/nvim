@@ -1,19 +1,12 @@
 local env = require "env"
 
---- @type NvPluginSpec
+-- Copilot inline + NES are handled by Copilot LSP + sidekick.nvim when NVIM_AI=copilot.
+-- This stub keeps the old zbirenbaum/copilot.lua plugin disabled to avoid dual LSPs.
+---@type NvPluginSpec
 return {
-  enabled = env.ai == "copilot",
+  enabled = false,
   "zbirenbaum/copilot.lua",
-  event = "InsertEnter",
-  cmd = { "Copilot" },
-  opts = {
-    filetypes = { yaml = true },
-    suggestion = {
-      enable = true,
-      auto_trigger = true,
-      keymap = {
-        accept = "<c-cr>",
-      },
-    },
-  },
+  cond = function()
+    return env.ai == "copilot"
+  end,
 }

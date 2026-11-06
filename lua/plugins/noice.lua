@@ -3,13 +3,28 @@ return {
   "folke/noice.nvim",
   event = "VeryLazy",
   dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+  -- Neovide briefly advertises ext_cmdline/ext_messages during startup; delay
+  -- setup until that temporary UI client is gone so health checks don't ERROR.
+  config = function(_, opts)
+    if vim.g.neovide then
+      vim.defer_fn(function()
+        require("noice").setup(opts)
+      end, 300)
+    else
+      require("noice").setup(opts)
+    end
+  end,
   keys = {
     { "<leader>N", "<cmd>Noice telescope<cr>", desc = "Notifications" },
     {
       "<Esc>",
       function()
-        vim.cmd [[noh]]
-        require("noice").cmd("dismiss")
+        vim.cmd.nohlsearch()
+        -- Lazy loads Noice via keys, but setup is scheduled — only dismiss once ready.
+        local ok, commands = pcall(require, "noice.commands")
+        if ok and commands.commands and commands.commands.dismiss then
+          commands.commands.dismiss()
+        end
       end,
       desc = "Close",
       mode = "n",
@@ -122,7 +137,6 @@ return {
       lsp_doc_border = true, -- add a border to hover docs and signature help
     },
     messages = {
-      view_history = false,
       view_search = false,
     },
     routes = {

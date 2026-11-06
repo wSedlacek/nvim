@@ -108,7 +108,31 @@ return {
     lazygit = { enabled = false },
     notify = { enabled = false },
     notifier = { enabled = false },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      actions = {
+        sidekick_send = function(...)
+          local ok, send = pcall(function()
+            return require("sidekick.cli.picker.snacks").send
+          end)
+          if not ok or not send then
+            vim.notify("sidekick.nvim is not available", vim.log.levels.WARN, { title = "snacks" })
+            return
+          end
+          return send(...)
+        end,
+      },
+      win = {
+        input = {
+          keys = {
+            ["<a-a>"] = {
+              "sidekick_send",
+              mode = { "n", "i" },
+            },
+          },
+        },
+      },
+    },
     quickfile = { enabled = true },
     rename = { enabled = true },
     scope = { enabled = true },

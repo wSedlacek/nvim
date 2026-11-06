@@ -20,6 +20,8 @@ return {
       "regex",
       "helm",
       "proto",
+      "rust",
+      "swift",
     },
   },
   config = function(_, opts)

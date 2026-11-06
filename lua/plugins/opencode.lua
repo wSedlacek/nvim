@@ -1,8 +1,10 @@
 local env = require "env"
 
+-- OpenCode CLI is routed through sidekick.nvim when NVIM_AI_CHAT=opencode.
+-- Keep this plugin available only if someone opts into the dedicated integration.
 ---@type NvPluginSpec
 return {
-  enabled = env.ai_chat == "opencode",
+  enabled = env.ai_chat == "opencode-native",
   "NickvanDyke/opencode.nvim",
   dependencies = { { "folke/snacks.nvim" } },
   keys = {
@@ -30,58 +32,6 @@ return {
       mode = { "n", "t" },
       desc = "Toggle opencode",
     },
-    {
-      "go",
-      function()
-        return require("opencode").operator "@this "
-      end,
-      mode = { "n", "x" },
-      expr = true,
-      desc = "Add range to opencode",
-    },
-    {
-      "goo",
-      function()
-        return require("opencode").operator "@this " .. "_"
-      end,
-      mode = "n",
-      expr = true,
-      desc = "Add line to opencode",
-    },
-    {
-      "<A-l>",
-      function()
-        return require("opencode").operator "@this " .. "_"
-      end,
-      mode = "n",
-      expr = true,
-      desc = "Add line to opencode",
-    },
-    {
-      "<A-l>",
-      function()
-        return require("opencode").operator "@this "
-      end,
-      mode = "x",
-      expr = true,
-      desc = "Add selection to opencode",
-    },
-    {
-      "<S-C-u>",
-      function()
-        require("opencode").command "session.half.page.up"
-      end,
-      mode = { "n", "t" },
-      desc = "opencode half page up",
-    },
-    {
-      "<S-C-d>",
-      function()
-        require("opencode").command "session.half.page.down"
-      end,
-      mode = { "n", "t" },
-      desc = "opencode half page down",
-    },
   },
   init = function()
     vim.g.opencode_opts = {
@@ -90,8 +40,6 @@ return {
         snacks = {},
       },
     }
-
-    -- Required for `opts.events.reload`.
     vim.o.autoread = true
   end,
 }

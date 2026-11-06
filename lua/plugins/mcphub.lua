@@ -1,9 +1,9 @@
 local env = require "env"
 
---- @type NvPluginSpec
+---@type NvPluginSpec
 return {
   "ravitemer/mcphub.nvim",
-  enabled = env.ai_chat == "copilot",
+  enabled = env.ai_chat == "codecompanion",
   dependencies = { "nvim-lua/plenary.nvim" },
   build = "bundled_build.lua",
   cmd = { "MCPHub" },

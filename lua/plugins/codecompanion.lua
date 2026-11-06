@@ -1,8 +1,10 @@
 local env = require "env"
 
---- @type NvPluginSpec
+--- In-editor AI chat (opt-in via NVIM_AI_CHAT=codecompanion).
+--- CLI chat tools use sidekick.nvim instead.
+---@type NvPluginSpec
 return {
-  enabled = env.ai_chat == "copilot",
+  enabled = env.ai_chat == "codecompanion",
   "olimorris/codecompanion.nvim",
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },

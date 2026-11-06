@@ -1,8 +1,10 @@
 local env = require "env"
 
---- @type NvPluginSpec
+-- Claude Code CLI is routed through sidekick.nvim when NVIM_AI_CHAT=claude|claudecode.
+-- Keep this plugin available only if someone opts into the dedicated integration.
+---@type NvPluginSpec
 return {
-  enabled = env.ai_chat == "claudecode",
+  enabled = env.ai_chat == "claudecode-native",
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },
   opts = {

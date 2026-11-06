@@ -256,15 +256,7 @@ vim.keymap.set("n", "<RightMouse>", function()
   require("menu").open(options, { mouse = true })
 end, {})
 
--- Copilot CLI
-if env.ai_chat == "copilot-cli" then
-  map({ "n", "t" }, "<C-.>", function()
-    require("snacks").terminal.toggle("copilot", {
-      win = { position = "right", width = 0.4 },
-      cwd = vim.fn.getcwd(),
-    })
-  end, { desc = "Toggle Copilot CLI" })
-end
+-- AI CLI chat keymaps live in lua/plugins/sidekick.lua (NVIM_AI_CHAT).
 
 -- Remove default keymaps
 local unmap = vim.keymap.del

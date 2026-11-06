@@ -19,10 +19,12 @@ if vim.g.neovide then
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
 
-  vim.g.neovide_padding_top = 0
+  -- Transparent frame draws macOS traffic lights over content; keep a small
+  -- left/top inset so the tabufline spacer has room.
+  vim.g.neovide_padding_top = 4
   vim.g.neovide_padding_bottom = 0
   vim.g.neovide_padding_right = 8
-  vim.g.neovide_padding_left = 8
+  vim.g.neovide_padding_left = 12
 
   vim.g.neovide_input_macos_option_key_is_meta = "both"
 
