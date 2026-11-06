@@ -130,19 +130,18 @@ map("v", "<A-Down>", ":m '>+1<CR>gv=gv", {
 
 -- Version Control System
 if env.vsc == "jj" then
-  map("n", "<leader>gj", function()
-    local function opts_to_id(id)
-      for _, opts in pairs(vim.g.nvchad_terms) do
-        if opts.id == id then
+  local function jj_term(id, cmd)
+    local function opts_to_id(term_id)
+      for _, opts in pairs(vim.g.nvchad_terms or {}) do
+        if opts.id == term_id then
           return opts
         end
       end
     end
 
-    local nvterm = require "nvchad.term"
-    nvterm.runner { pos = "sp", id = "jj", cmd = "lazyjj && exit || exit" }
+    require("nvchad.term").runner { pos = "sp", id = id, cmd = cmd }
 
-    local opts = opts_to_id "jj"
+    local opts = opts_to_id(id)
     if not opts then
       return
     end
@@ -154,11 +153,27 @@ if env.vsc == "jj" then
         end
 
         vim.schedule(function()
-          vim.api.nvim_buf_delete(opts.buf, {})
+          pcall(vim.api.nvim_buf_delete, opts.buf, {})
         end)
       end,
     })
+  end
+
+  map("n", "<leader>gj", function()
+    jj_term("jj", "lazyjj && exit || exit")
   end, { desc = "vsc Open Version Control" })
+
+  map("n", "<leader>gs", function()
+    jj_term("jj-status", "jj status; echo; printf 'press enter…'; read")
+  end, { desc = "vsc status" })
+
+  map("n", "<leader>gd", function()
+    jj_term("jj-diff", "jj diff; echo; printf 'press enter…'; read")
+  end, { desc = "vsc diff" })
+
+  map("n", "<leader>gL", function()
+    jj_term("jj-log", "jj log -n 30; echo; printf 'press enter…'; read")
+  end, { desc = "vsc log" })
 end
 
 -- LSP

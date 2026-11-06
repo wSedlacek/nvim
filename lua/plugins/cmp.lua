@@ -20,6 +20,7 @@ return {
   end,
   config = function(plugin, opts)
     local sources = {
+      { name = "lazydev", group_index = 0 },
       { name = "nvim_lsp" },
       { name = "npm", keyword_length = 4 },
       { name = "luasnip" },

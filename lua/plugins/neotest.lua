@@ -1,6 +1,5 @@
 ---@type NvPluginSpec
 return {
-  enabled = false,
   "nvim-neotest/neotest",
   event = "VeryLazy",
   keys = {

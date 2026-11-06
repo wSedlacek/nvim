@@ -17,14 +17,11 @@ return {
         local trouble = require "trouble"
         if trouble.is_open() then
           trouble.close()
-        else
-          local call = pcall(require, "qf_helper")
-          if call then
-            vim.cmd [[Cclose]]
-          end
+          return
         end
+        require("quicker").close()
       end,
-      desc = "Close Quickfix",
+      desc = "Close Trouble / quickfix",
     },
   },
   opts = {
@@ -36,7 +33,7 @@ return {
       position = "right",
       relative = "win",
       size = 0.5,
-      on_mount = function(self)
+      on_mount = function()
         vim.cmd [[Neominimap TabDisable]]
       end,
     },
@@ -45,31 +42,4 @@ return {
       ["<s-tab>"] = "prev",
     },
   },
-  config = function(_, opts)
-    require("trouble").setup(opts)
-
-    -- hijack other windows with trouble https://github.com/folke/trouble.nvim/issues/70#issuecomment-1528094026
-    local function use_trouble()
-      local trouble = require "trouble"
-      -- Check whether we deal with a quickfix or location list buffer, close the window and open the
-      -- corresponding Trouble window instead.
-      if vim.fn.getloclist(0, { filewinid = 1 }).filewinid ~= 0 then
-        vim.schedule(function()
-          vim.cmd.lclose()
-          trouble.open "loclist"
-        end)
-      else
-        vim.schedule(function()
-          vim.cmd.cclose()
-          trouble.open "quickfix"
-        end)
-      end
-    end
-
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "qf" },
-      callback = use_trouble,
-    })
-
-  end,
 }

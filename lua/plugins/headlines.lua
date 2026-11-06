@@ -2,11 +2,11 @@
 return {
   "lukas-reineke/headlines.nvim",
   dependencies = "nvim-treesitter/nvim-treesitter",
+  -- Markdown previews are handled by markview.nvim
   opts = {
-    markdown = {},
     org = {
       fat_headlines = false,
     },
   },
-  ft = { "markdown", "org" },
+  ft = { "org" },
 }

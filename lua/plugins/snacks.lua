@@ -12,6 +12,20 @@ return {
       end,
       desc = "Zen Mode",
     },
+    {
+      "<leader>.",
+      function()
+        require("snacks").scratch()
+      end,
+      desc = "Toggle scratch buffer",
+    },
+    {
+      "<leader>S",
+      function()
+        require("snacks").scratch.select()
+      end,
+      desc = "Select scratch buffer",
+    },
     -- Git browse
     {
       "<leader>gl",
@@ -60,7 +74,7 @@ return {
     },
   },
   opts = {
-    bigfile = { enabled = false },
+    bigfile = { enabled = true },
     dashboard = { enabled = false },
     explorer = { enabled = false },
     git = { enabled = false },
@@ -98,7 +112,7 @@ return {
     quickfile = { enabled = true },
     rename = { enabled = true },
     scope = { enabled = true },
-    scratch = { enabled = false },
+    scratch = { enabled = true },
     scroll = { enabled = false },
     statuscolumn = { enabled = false },
     terminal = { enabled = false },

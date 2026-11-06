@@ -43,3 +43,4 @@ require "filetypes"
 require "autocmds"
 require "commands"
 require "snippets"
+require("t3").setup()

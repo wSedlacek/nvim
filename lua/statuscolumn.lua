@@ -16,7 +16,6 @@ local blacklistedFormats = {
   "Trouble",
   "lir",
   "Outline",
-  "spectre_panel",
   "toggleterm",
   "DressingSelect",
   "TelescopePrompt",
